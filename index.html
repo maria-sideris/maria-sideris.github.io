@@ -746,6 +746,18 @@
   .tema-cerrar:hover{color:var(--oro-claro)}
   .tema-cerrar:focus-visible{outline:2px solid var(--oro);outline-offset:4px;border-radius:2px}
   @media (max-width:860px){.panel{margin-top:14px;padding-top:32px}.tema-h{font-size:1rem;line-height:1.18}}
+
+  /* ---- prototipo 9: lecturas, solo legibilidad ---- */
+  /* el texto de cuerpo conserva su rol (gris tenue, por debajo del título), pero un punto más luminoso y con más interlineado */
+  .servicio > p:not(.duracion){color:#A9BDD6;font-size:16px;line-height:1.62}
+  .servicio .apunte-tarjeta p{color:var(--tenue)}
+  /* flechas del carrusel: un poco más grandes y con más contraste, mismo dibujo y mismos tonos */
+  /* flechas sin circulo: solo el simbolo, que se enciende al pasar el cursor (mismo halo que las estrellas) */
+  .flecha{width:36px;height:36px;border:0;color:var(--oro);font-size:26px;font-weight:300;opacity:.85;
+    transition:color .2s,opacity .2s,filter .2s,transform .2s}
+  .flecha:hover:not(:disabled){color:var(--oro-claro);opacity:1;filter:drop-shadow(0 0 6px rgba(168,200,234,.7));transform:scale(1.12)}
+  .flecha:focus-visible{outline:1px solid var(--oro);outline-offset:2px;border-radius:2px}
+  .flecha:disabled{opacity:.25}
 </style>
 
 <div class="cielo"></div>
@@ -1452,6 +1464,21 @@
       });
     });
   });
+  /* en pantalla ancha, donde varias tarjetas o pasos se ven en fila, sus titulos se igualan
+     para que el texto que sigue parta a la misma altura en todos (lecturas, pasos, temas) */
+  function igualarTarjetas(){
+    var ancha = window.matchMedia('(min-width:861px)').matches;
+    ['.servicio h3', '.paso h3', '.tema-h'].forEach(function(sel){
+      var els = Array.prototype.slice.call(document.querySelectorAll(sel));
+      els.forEach(function(e){ e.style.minHeight = ''; });
+      if (!ancha || els.length < 2) return;
+      var alto = 0; els.forEach(function(e){ alto = Math.max(alto, e.getBoundingClientRect().height); });
+      els.forEach(function(e){ e.style.minHeight = Math.ceil(alto) + 'px'; });
+    });
+  }
+  igualarTarjetas();
+  var esperaTarj; window.addEventListener('resize', function(){ clearTimeout(esperaTarj); esperaTarj = setTimeout(igualarTarjetas, 120); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(igualarTarjetas);
   window.addEventListener('hashchange', abrirDestino);
   abrirDestino();
 
