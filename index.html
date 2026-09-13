@@ -700,6 +700,45 @@
     padding:15px 20px;font-size:14px;line-height:1.55;margin-bottom:32px}
   .pendiente b{font-weight:500;color:#fff}
   .reservado{border:1px dashed var(--linea);border-radius:4px;padding:22px 24px;color:var(--tenue);font-size:15.5px}
+
+  /* ---- nota "¿no sabes qué lectura elegir?", pegada a la del descuento ---- */
+  .nota.elegir-d{margin-top:0;padding-top:0;padding-bottom:6px}
+  .nota + .nota.elegir-d{margin-top:-6px}
+  .nota.elegir-d p{margin-top:10px}
+  .nota.elegir-d .enlace{font-style:italic}
+
+  /* ---- para los que quieren saber más: dos temas sobre el hilo, como los pasos de una consulta ---- */
+  @media (min-width:861px){.pasos.temas{grid-template-columns:1fr 1fr}}
+  .tema{display:block;width:100%;text-align:left;background:none;border:0;color:inherit;font:inherit;cursor:pointer;padding:34px 0 0;margin:0}
+  .tema .num{display:block}
+  .tema-h{display:block;font-family:'Cinzel',Georgia,'Times New Roman',serif;font-weight:400;font-size:1.1rem;line-height:1.25;letter-spacing:.01em;
+    color:var(--pergamino);max-width:30ch;transition:color .25s}
+  .tema-p{display:block;color:var(--tenue);font-size:15.5px;line-height:1.55;margin-top:7px}
+  .tema-abrir{display:inline-flex;align-items:center;gap:9px;margin-top:12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);transition:color .2s}
+  .tema-abrir .ico{font-size:1.15rem;line-height:1;font-family:'Jost',sans-serif;font-weight:300}
+  .tema-abrir .cierra,.tema-abrir .menos-i,.tema[aria-expanded="true"] .tema-abrir .abre,.tema[aria-expanded="true"] .tema-abrir .mas-i{display:none}
+  .tema[aria-expanded="true"] .tema-abrir .cierra,.tema[aria-expanded="true"] .tema-abrir .menos-i{display:inline}
+  .tema:hover .tema-abrir,.tema:hover .tema-h{color:var(--oro-claro)}
+  /* el tema abierto: su estrella se enciende igual que en el carrusel de pasos */
+  .tema[aria-expanded="true"]::before{opacity:1;transform:scale(1.28);filter:drop-shadow(0 0 5px rgba(168,200,234,.5))}
+  .tema[aria-expanded="true"] .tema-h{color:var(--oro-claro)}
+  .tema:focus-visible{outline:2px solid var(--oro);outline-offset:6px;border-radius:2px}
+  .tema:active::before{opacity:1;transform:scale(1.28);filter:drop-shadow(0 0 7px rgba(168,200,234,.7))}
+  .panel{margin-top:48px;padding-top:40px;border-top:1px solid rgba(168,200,234,.12)}
+  /* quien ya eligio desplegar quiere leer: la comparacion va entera tambien en el telefono */
+  #saber-mas .escuela .plegable{display:flex}
+  #saber-mas .escuela .ver-mas{display:none}
+  .mas-cerrar{display:inline-flex;align-items:center;gap:9px;margin-top:8px;background:none;border:0;padding:0;cursor:pointer;
+    font:inherit;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);transition:color .2s;align-self:flex-start}
+  .mas-cerrar .ico{font-size:1.15rem;line-height:1;font-family:'Jost',sans-serif;font-weight:300}
+  .mas-cerrar:hover{color:var(--oro-claro)}
+  .mas-cerrar:focus-visible{outline:2px solid var(--oro);outline-offset:4px;border-radius:2px}
+  .tema-cerrar{display:inline-flex;align-items:center;gap:9px;margin-top:34px;background:none;border:0;padding:0;cursor:pointer;
+    font:inherit;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);transition:color .2s}
+  .tema-cerrar .ico{font-size:1.15rem;line-height:1;font-family:'Jost',sans-serif;font-weight:300}
+  .tema-cerrar:hover{color:var(--oro-claro)}
+  .tema-cerrar:focus-visible{outline:2px solid var(--oro);outline-offset:4px;border-radius:2px}
+  @media (max-width:860px){.panel{margin-top:14px;padding-top:32px}}
 </style>
 
 <div class="cielo"></div>
@@ -715,8 +754,7 @@
       <a href="#servicios" data-en="Services">Servicios</a>
       <a href="#proceso" data-en="How it works">Cómo funciona</a>
       <a href="#herramientas" data-en="Tools">Herramientas</a>
-      <a href="#vedica" data-en="What it is">Qué es</a>
-      <a href="#comparacion" data-en="Vedic vs Western">Védica vs tropical</a>
+      <a href="#saber-mas" data-en="Learn more">Saber más</a>
       <a href="#preguntas" data-en="FAQ">Preguntas</a>
     </div>
     <div class="idioma" role="group" aria-label="Idioma">
@@ -733,8 +771,7 @@
       <a href="#servicios" data-en="Services">Servicios</a>
       <a href="#proceso" data-en="How it works">Cómo funciona</a>
       <a href="#herramientas" data-en="Tools">Herramientas</a>
-      <a href="#vedica" data-en="What it is">Qué es</a>
-      <a href="#comparacion" data-en="Vedic vs Western">Védica vs tropical</a>
+      <a href="#saber-mas" data-en="Learn more">Saber más</a>
       <a href="#preguntas" data-en="FAQ">Preguntas</a>
   </div>
 </nav>
@@ -764,12 +801,14 @@
       <p class="rotulo" data-en="Who reads your chart">Quién lee tu carta</p>
       <h2 style="font-size:clamp(1.8rem,3.3vw,2.5rem);margin:14px 0 20px" data-en="About me">Sobre mí</h2>
       <div class="prosa">
-        <p data-en="For a long time I had no compass. I had never found anything I was passionate about, so I studied business and economics because it could be combined with whatever came later. I got through it the way you get through school: study, pass the courses, move on. I left university knowing how to do it well and with no idea what I wanted to do with my life.">Durante mucho tiempo anduve sin brújula. Nunca había encontrado algo que me apasionara, y estudié Ingeniería Comercial porque se podía complementar con lo que fuera el día de mañana. La cursé como quien termina el colegio: estudiar, pasar los ramos, seguir. Salí de la universidad sabiendo hacerlo bien y sin saber a qué quería dedicar mi vida.</p>
-        <p data-en="What I did have was a calling I could not explain. Ever since I was small I dreamed of India. I would watch Aladdin and feel I belonged to that world. By thirteen the feeling had a name, and I promised myself that as soon as I finished university I would go. Not to travel around Southeast Asia. To India, and all of my time in India. I felt I would find myself there.">Lo que sí tenía era un llamado que no sabía explicar. Desde muy pequeña soñaba con la India. Veía Aladdín y sentía que pertenecía a ese mundo. A los trece esa sensación ya tenía nombre, y me prometí que apenas saliera de la universidad me iría para allá. No a recorrer el sudeste asiático. A la India, y todo el tiempo en la India. Sentía que ahí me iba a encontrar.</p>
+        <p data-en="I&#x27;m María Jesús, a Vedic astrologer (jyotish) and the founder of Sideris. I have always believed that structure and spirituality make a great team. My training in business engineering gave me the method, and a revealing trip to India gave me the vocation I had always been looking for.">Soy María Jesús, astróloga védica (jyotish) y creadora de Sideris. Siempre he creído que la estructura y la espiritualidad hacen un gran equipo. Mi formación en ingeniería comercial me dio el método, y un viaje revelador a la India me entregó la vocación que siempre había buscado.</p>
+        <p data-en="I came to this practice almost by chance on that trip, and fascination led me to study it in depth. I discovered that jyotish is the ideal space to bring my two worlds together. Today I analyse each chart with the rigour of my rational side and the depth of jyotish, hoping to give you the same clarity I found.">Llegué a esta práctica casi por casualidad en ese viaje, y la fascinación me llevó a estudiarla a fondo. Descubrí que el jyotish es el espacio ideal para integrar mis dos mundos. Hoy analizo cada carta con el rigor de mi lado racional y la profundidad del jyotish, buscando entregarte la misma claridad que yo encontré.</p>
 
         <details class="mas">
-          <summary data-en="Keep reading">Seguir leyendo</summary>
+          <summary data-en="Read my story">Leer mi historia</summary>
           <div class="mas-cuerpo">
+        <p data-en="For a long time I had no compass. I had never found anything I was passionate about, so I studied business and economics because it could be combined with whatever came later. I got through it the way you get through school: study, pass the courses, move on. I left university knowing how to do it well and with no idea what I wanted to do with my life.">Durante mucho tiempo anduve sin brújula. Nunca había encontrado algo que me apasionara, y estudié Ingeniería Comercial porque se podía complementar con lo que fuera el día de mañana. La cursé como quien termina el colegio: estudiar, pasar los ramos, seguir. Salí de la universidad sabiendo hacerlo bien y sin saber a qué quería dedicar mi vida.</p>
+        <p data-en="What I did have was a calling I could not explain. Ever since I was small I dreamed of India. I would watch Aladdin and feel I belonged to that world. By thirteen the feeling had a name, and I promised myself that as soon as I finished university I would go. Not to travel around Southeast Asia. To India, and all of my time in India. I felt I would find myself there.">Lo que sí tenía era un llamado que no sabía explicar. Desde muy pequeña soñaba con la India. Veía Aladdín y sentía que pertenecía a ese mundo. A los trece esa sensación ya tenía nombre, y me prometí que apenas saliera de la universidad me iría para allá. No a recorrer el sudeste asiático. A la India, y todo el tiempo en la India. Sentía que ahí me iba a encontrar.</p>
           <p data-en="I prepared the trip in secret and told my mother three days before, so she would not spend months worrying. I went alone. I spent months travelling, meeting people, watching the culture up close. I felt at home and I felt free.">Preparé el viaje en secreto y a mi mamá le conté tres días antes, para no tenerla preocupada meses. Me fui sola. Estuve meses recorriendo, conociendo gente, mirando la cultura de cerca. Me sentí en casa y me sentí libre.</p>
           <p data-en="Before leaving I had gone to the Registro Civil to ask for my birth time. I wanted a reading one day, though I did not yet know who would give it to me.">Antes de viajar había ido al Registro Civil a pedir mi hora de nacimiento. Quería hacerme una lectura algún día, aunque todavía no sabía con quién.</p>
           <p data-en="On a bus I met a traveller who the next day invited me to lunch with his girlfriend. She was a Vedic astrologer.">En un bus conocí a un viajero que al día siguiente me invitó a almorzar con su novia. Ella era astróloga védica.</p>
@@ -781,6 +820,7 @@
             <p data-en="With my training already under way I went into the corporate world: first as a designer on the marketing team and then in finance, at the same company, for about a year and a half. I worked through spreadsheets and business strategy, and every free moment went to the charts.">Con la formación andando entré al mundo corporativo: primero como diseñadora en el área de marketing y después en finanzas, en la misma empresa, cerca de un año y medio. Analizaba planillas y estrategias comerciales, y cada rato libre lo dedicaba a las cartas.</p>
             <p data-en="Until I resigned. I left the security of finance to give myself to this completely.">Hasta que renuncié. Dejé la estabilidad de finanzas para dedicarme a esto por completo.</p>
             <p data-en="The urge to understand more has not stopped growing, because jyotish is a lifelong study and there is always something left to learn. Engineering, marketing and finance gave me the order. India gave me the connection. Today I put both at your service, to help you find your compass, the way jyotish helped me find mine.">Las ganas de entender más no han parado de crecer, porque el jyotish es un estudio de por vida y siempre queda algo por aprender. La ingeniería, el marketing y las finanzas me dieron el orden. La India me dio la conexión. Hoy pongo las dos cosas a tu servicio, para ayudarte a encontrar tu brújula, como el jyotish me ayudó a encontrar la mía.</p>
+            <button type="button" class="mas-cerrar"><span data-en="Close">Cerrar</span><span class="ico" aria-hidden="true">–</span></button>
           </div>
         </details>
       </div>
@@ -882,6 +922,10 @@
       <p data-en="If I have already read your chart, your next 75 or 90 minute reading has 20% off. Write to me and I apply it when booking.">Si ya te leí la carta, tu siguiente lectura de 75 o 90 minutos tiene un 20% de descuento. Me escribes y lo aplico al agendar.</p>
     </div>
 
+    <div class="nota elegir-d">
+      <p data-en="Not sure which reading to choose? &lt;a class=&quot;enlace&quot; href=&quot;https://wa.me/56977144037?text=Hola%20Mar%C3%ADa%20Jes%C3%BAs%2C%20no%20s%C3%A9%20qu%C3%A9%20lectura%20elegir%2C%20%C2%BFme%20ayudas%3F&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Write to me and we will look at it together&lt;/a&gt;.">¿No sabes qué lectura elegir? <a class="enlace" href="https://wa.me/56977144037?text=Hola%20Mar%C3%ADa%20Jes%C3%BAs%2C%20no%20s%C3%A9%20qu%C3%A9%20lectura%20elegir%2C%20%C2%BFme%20ayudas%3F" data-wa-en="Hi María Jesús, I'm not sure which reading to choose, could you help me?" target="_blank" rel="noopener">Escríbeme y lo vemos juntas</a>.</p>
+    </div>
+
     <details class="mas detalles">
       <summary data-en="More details">Más detalles</summary>
       <div class="mas-cuerpo">
@@ -977,27 +1021,44 @@
   </div>
 </section>
 
-<section id="vedica">
+
+<section id="saber-mas">
   <div class="env">
     <div class="cabecera">
-      <p class="rotulo" data-en="Where it starts">Punto de partida</p>
-      <h2 data-en="What Vedic astrology is">Qué es la astrología védica</h2>
+      <p class="rotulo" data-en="A bit of context">Un poco de contexto</p>
+      <h2 data-en="For those who want to know more">Para los que quieren saber más</h2>
     </div>
-    <div class="apertura">
+    <div class="carrusel">
+      <div class="carrusel-ctrl">
+        <button class="flecha" type="button" data-dir="-1" aria-label="Ver anteriores" data-en-aria="Show previous">&#8249;</button>
+        <button class="flecha" type="button" data-dir="1" aria-label="Ver siguientes" data-en-aria="Show next">&#8250;</button>
+      </div>
+      <div class="pasos pista temas" tabindex="0" role="group" aria-label="Temas para saber más" data-en-aria="Topics to learn more">
+      <button class="paso tema" type="button" aria-expanded="false" aria-controls="vedica">
+        <span class="num">01</span>
+        <span class="tema-h" data-en="What Vedic astrology is">Qué es la astrología védica</span>
+        <span class="tema-p" data-en="Where it starts">Punto de partida</span>
+        <span class="tema-abrir"><span class="abre" data-en="Read">Leer</span><span class="cierra" data-en="Close">Cerrar</span><span class="ico mas-i" aria-hidden="true">+</span><span class="ico menos-i" aria-hidden="true">–</span></span>
+      </button>
+      <button class="paso tema" type="button" aria-expanded="false" aria-controls="comparacion">
+        <span class="num">02</span>
+        <span class="tema-h" data-en="Vedic vs Western astrology">Astrología védica vs tropical</span>
+        <span class="tema-p" data-en="Two traditions">Dos tradiciones</span>
+        <span class="tema-abrir"><span class="abre" data-en="Read">Leer</span><span class="cierra" data-en="Close">Cerrar</span><span class="ico mas-i" aria-hidden="true">+</span><span class="ico menos-i" aria-hidden="true">–</span></span>
+      </button>
+      </div>
+    </div>
+    <div class="panel" id="vedica" hidden>
+      <div class="apertura">
     <div class="prosa">
       <p data-en="Known as the &lt;strong&gt;science of light&lt;/strong&gt;, Vedic astrology (jyotish) is an ancient discipline from India with thousands of years of unbroken practice.">Conocida como la <strong>ciencia de la luz</strong>, la astrología védica (jyotish) es una disciplina ancestral originaria de la India con miles de años de práctica ininterrumpida.</p>
       <p data-en="Beyond the calculations, jyotish is a map of your life's weather. Just as we check the forecast to know whether it will rain or shine, this tool lets you anticipate and understand both your inner emotional climate and the physical circumstances around you. Not to limit you, but so you know when it is time to take shelter and when to act.">Más allá de los cálculos, el jyotish es un mapa del clima de tu vida. Así como revisamos el pronóstico del tiempo para saber si va a llover o si habrá sol, esta herramienta te permite anticipar y comprender tanto tu clima emocional interno como las circunstancias físicas que te rodean. No para limitarte, sino para que sepas cuándo es momento de resguardarte y cuándo de actuar.</p>
-      <details class="mas">
-        <summary data-en="Keep reading">Seguir leyendo</summary>
-        <div class="mas-cuerpo">
           <p data-en="This knowledge is drawn from sacred texts (shastras) thousands of years old. These Sanskrit texts go through a rigorous process of translation and validation with research teams. Testing them against real charts keeps the wisdom authentic and free of distortion, and that is what I bring to your session.">Este conocimiento es rescatado de textos sagrados (shastras), de antigüedad milenaria. Estos textos sánscritos son sometidos a un riguroso proceso de traducción y validación con equipos de investigación. Al contrastar los textos con cartas reales, se garantiza una sabiduría auténtica y libre de distorsiones, la cual aplico directamente en tu sesión.</p>
           <p data-en="Your birth chart is made up of the exact position of the planets at the moment and place you were born. To calculate it I use a &lt;strong&gt;sidereal system&lt;/strong&gt;, which takes the fixed stars as its point of reference. From that come the positions of the planets, the signs, the houses and the timing.">Tu carta astral está compuesta por la posición exacta de los planetas en el momento y el lugar en que naciste. Para calcularla uso un <strong>sistema sideral</strong>, que toma las estrellas fijas como punto de referencia. De ahí salen las posiciones de los planetas, los signos, las casas y los tiempos.</p>
           <p data-en="To do this, jyotish draws on both the &lt;strong&gt;solar zodiac&lt;/strong&gt; and the &lt;strong&gt;lunar&lt;/strong&gt; one: the twelve signs and the twenty-seven lunar mansions. It is the lunar zodiac that gives Vedic astrology its predictive power, alongside its reading of psychology, strengths and weaknesses.">Para lograrlo, el jyotish se compone tanto del <strong>zodiaco solar</strong> como el <strong>lunar</strong>, contempla los doce signos, como las veintisiete mansiones lunares, gracias al zodiaco lunar es que la astrología védica destaca por su capacidad predictiva, aparte de la capacidad de análisis psicológico, fortalezas y debilidades.</p>
           <p data-en="From the lunar zodiac come the dashas, the periods that order your life with dates. Alongside them come the divisional charts, transit analysis, the ashtakavarga points, the yogas and the arudhas, among many others. This is the machinery that makes it possible to speak of &lt;strong&gt;when&lt;/strong&gt;.">Del zodiaco lunar nacen los dashas, los períodos que ordenan tu vida con fechas. Junto a ellos entran en juego las cartas divisorias, el análisis de tránsitos, los puntos de ashtakavarga, los yogas y los arudhas, entre muchas otras. Es la maquinaria que hace posible hablar de <strong>cuándo</strong>.</p>
           <p data-en="Jyotish is not only predictive. It describes character, wounds and resources with the same depth as any psychological astrology. What the lunar zodiac adds is one more dimension: time.">El jyotish no es solo predictivo. Describe carácter, heridas y recursos con la misma profundidad que cualquier astrología psicológica. Lo que agrega el zodiaco lunar es una dimensión más: el tiempo.</p>
           <p data-en="For jyotish there is a fixed scenario (what you come to live and when it switches on) and a flexible part (the awareness you bring and what you decide under that sky). My work is to read the first so that you have something to decide the second with.">Para el jyotish hay un escenario fijo (lo que vienes a vivir y cuándo se activa) y una parte flexible (la conciencia con la que llegas y lo que decides bajo ese cielo). Mi trabajo es leer lo primero para que tengas con qué decidir lo segundo.</p>
-        </div>
-      </details>
     </div>
     <figure class="fig">
       <svg viewBox="0 0 320 176" aria-hidden="true" focusable="false">
@@ -1017,18 +1078,12 @@
       </svg>
       <figcaption data-en="<span class='lbl'>Calculation systems:</span> Each division is one sign. Both scales measure the same sky, but they begin counting 24 degrees apart (ayanamsa)."><span class="lbl">Sistemas de cálculo:</span> Cada división es un signo. Las dos escalas miden el mismo cielo, pero empiezan a contar con 24 grados de diferencia (ayanamsa).</figcaption>
     </figure>
+    
+      </div>
+      <button type="button" class="tema-cerrar" data-panel="vedica"><span data-en="Close">Cerrar</span><span class="ico" aria-hidden="true">–</span></button>
     </div>
-  </div>
-</section>
-
-<section id="comparacion">
-  <div class="env">
-    <div class="cabecera">
-      <p class="rotulo" data-en="Two traditions">Dos tradiciones</p>
-      <h2 data-en="Vedic vs Western astrology">Astrología védica vs tropical</h2>
-    </div>
-
-    <div class="carrusel">
+    <div class="panel" id="comparacion" hidden>
+      <div class="carrusel">
       <div class="carrusel-ctrl">
         <button class="flecha" type="button" data-dir="-1" aria-label="Ver anteriores" data-en-aria="Show previous">&#8249;</button>
         <button class="flecha" type="button" data-dir="1" aria-label="Ver siguientes" data-en-aria="Show next">&#8250;</button>
@@ -1100,6 +1155,8 @@
 
     <div class="nota">
       <p data-en="If you know your western chart, because of those 24 degrees your Sun, your ascendant and most of your planets will probably fall in the sign before it. They are two maps with different lenses. Jyotish complements the solar zodiac with the lunar one and the divisional charts, and that is where it enriches the what: who you are and what your real potential is. To that it adds the exact machinery for answering the when.">Si conoces tu carta occidental, por esos 24 grados es probable que tu Sol, tu ascendente y la mayoría de tus planetas caigan en el signo anterior. Son dos mapas con lentes distintos. El jyotish complementa el zodiaco solar con el lunar y las cartas divisorias, y con eso enriquece el qué: quién eres y cuál es tu potencial real. A eso le suma la maquinaria exacta para responder el cuándo.</p>
+    
+      <button type="button" class="tema-cerrar" data-panel="comparacion"><span data-en="Close">Cerrar</span><span class="ico" aria-hidden="true">–</span></button>
     </div>
   </div>
 </section>
@@ -1318,8 +1375,63 @@
     try { el = document.querySelector(h); } catch(e){ return; }
     if (!el) return;
     if (el.tagName === 'DETAILS') el.open = true;
+    if (el.classList.contains('panel')){ var bt = document.querySelector('.tema[aria-controls="' + el.id + '"]'); if (bt && bt.getAttribute('aria-expanded') !== 'true') bt.click(); }
     setTimeout(function(){ el.scrollIntoView({behavior:'smooth', block:'center'}); }, 60);
   }
+  var temas = Array.prototype.slice.call(document.querySelectorAll('.tema'));
+  function abrirTema(btn){
+    var abrir = btn.getAttribute('aria-expanded') !== 'true';
+    temas.forEach(function(b){ b.setAttribute('aria-expanded', 'false'); document.getElementById(b.getAttribute('aria-controls')).hidden = true; });
+    if (abrir){
+      btn.setAttribute('aria-expanded', 'true');
+      var panel = document.getElementById(btn.getAttribute('aria-controls'));
+      panel.hidden = false;
+      /* el carrusel de la comparacion parte corrido (data-asomo) para que asome la otra tarjeta;
+         estando oculto no pudo hacerlo al cargar, asi que se repite al abrir */
+      Array.prototype.forEach.call(panel.querySelectorAll('.pista[data-asomo]'), function(pi){
+        if (window.matchMedia('(max-width:760px)').matches && pi.scrollLeft < 4){
+          var sv = pi.style.scrollBehavior; pi.style.scrollBehavior = 'auto';
+          pi.scrollLeft = parseInt(pi.getAttribute('data-asomo'), 10); pi.style.scrollBehavior = sv;
+        }
+      });
+      setTimeout(function(){ window.dispatchEvent(new Event('resize')); }, 30);
+    }
+  }
+  var dondeLei = {};
+  temas.forEach(function(b){ b.addEventListener('click', function(){
+    /* se guarda el punto exacto de la pagina donde se toco "Leer", para volver ahi al cerrar */
+    dondeLei[b.getAttribute('aria-controls')] = window.pageYOffset || document.documentElement.scrollTop;
+    abrirTema(b);
+  }); });
+  /* "Leer mi historia": se recuerda donde estaba la pagina al abrir, y el "Cerrar" de abajo vuelve ahi */
+  Array.prototype.forEach.call(document.querySelectorAll('#sobre-mi details.mas'), function(d){
+    var y0 = null, sum = d.querySelector('summary'), cierre = d.querySelector('.mas-cerrar');
+    if (!sum || !cierre) return;
+    sum.addEventListener('click', function(){ if (!d.open) y0 = window.pageYOffset || document.documentElement.scrollTop; });
+    cierre.addEventListener('click', function(){
+      d.open = false;
+      requestAnimationFrame(function(){
+        var y = y0;
+        if (typeof y !== 'number'){ var r = sum.getBoundingClientRect(); y = r.top + window.pageYOffset - (window.innerHeight - r.height) / 2; }
+        window.scrollTo({top: Math.max(0, y), behavior: 'smooth'});
+        sum.focus({preventScroll:true});
+      });
+    });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.tema-cerrar'), function(c){
+    c.addEventListener('click', function(){
+      var b = document.querySelector('.tema[aria-controls="' + c.getAttribute('data-panel') + '"]');
+      if (!b) return;
+      var id = c.getAttribute('data-panel');
+      abrirTema(b);
+      requestAnimationFrame(function(){
+        var y = dondeLei[id];
+        if (typeof y !== 'number'){ var r = b.getBoundingClientRect(); y = r.top + window.pageYOffset - (window.innerHeight - r.height) / 2; }
+        window.scrollTo({top: Math.max(0, y), behavior: 'smooth'});
+        b.focus({preventScroll:true});
+      });
+    });
+  });
   window.addEventListener('hashchange', abrirDestino);
   abrirDestino();
 
@@ -1584,7 +1696,7 @@
      leyendo". Se mueve el nodo en vez de esconderlo, para que al desplegar
      aparezca en su orden y se siga traduciendo igual. */
   var chico = window.matchMedia('(max-width:760px)');
-  ['#sobre-mi', '#vedica'].forEach(function(id){
+  ['#vedica'].forEach(function(id){ /* Sobre mí: los dos párrafos nuevos son cortos y se ven también en el teléfono */
     var prosa = document.querySelector(id + ' .prosa');
     if (!prosa) return;
     var cuerpo = prosa.querySelector('.mas-cuerpo');
