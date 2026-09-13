@@ -634,7 +634,9 @@
      asi el bloque legal pesa menos que el resto de la pagina */
   /* el bloque legal no sigue el peso de los titulos: ahi lo que se busca es
      justo lo contrario, que pese menos que el resto de la pagina */
-  .faq.legal-lista summary{font-size:.98rem;padding:17px 40px 17px 0;color:var(--tenue);font-weight:300}
+  .faq.legal-lista summary{font-size:.84rem;letter-spacing:.02em;padding:14px 40px 14px 0;color:var(--tenue);font-weight:300}
+  .faq.legal-lista summary::after{font-size:1.05rem}
+  .faq.legal-lista details[open] > summary{color:var(--pergamino)}
   .faq.legal-lista p{font-size:14.5px;padding:0 40px 12px 0;line-height:1.66}
   .faq.legal-lista details > *:last-child{padding-bottom:22px}
   .faq.legal-lista h4{font-family:'Jost',system-ui,sans-serif;font-weight:400;color:var(--pergamino);
@@ -708,7 +710,12 @@
   .nota.elegir-d .enlace{font-style:italic}
 
   /* ---- para los que quieren saber más: dos temas sobre el hilo, como los pasos de una consulta ---- */
-  @media (min-width:861px){.pasos.temas{grid-template-columns:1fr 1fr}}
+  @media (min-width:861px){.pasos.temas{grid-template-columns:repeat(3,1fr)}}
+  #dudas .faq{border-top:0;margin-top:-14px}
+  /* preguntas frecuentes: un poco menos de aire entre preguntas (misma densidad que la lista legal del pie) */
+  #preguntas .faq > details > summary{padding-top:14px;padding-bottom:14px;font-size:1.02rem;color:var(--tenue);font-weight:300}
+  #preguntas .faq > details > summary:hover{color:var(--oro-claro)}
+  #preguntas .faq > details[open] > summary{color:var(--pergamino)}
   .tema{display:block;width:100%;text-align:left;background:none;border:0;color:inherit;font:inherit;cursor:pointer;padding:34px 0 0;margin:0}
   .tema .num{display:block}
   .tema-h{display:block;font-family:'Cinzel',Georgia,'Times New Roman',serif;font-weight:400;font-size:1.1rem;line-height:1.25;letter-spacing:.01em;
@@ -738,7 +745,7 @@
   .tema-cerrar .ico{font-size:1.15rem;line-height:1;font-family:'Jost',sans-serif;font-weight:300}
   .tema-cerrar:hover{color:var(--oro-claro)}
   .tema-cerrar:focus-visible{outline:2px solid var(--oro);outline-offset:4px;border-radius:2px}
-  @media (max-width:860px){.panel{margin-top:14px;padding-top:32px}}
+  @media (max-width:860px){.panel{margin-top:14px;padding-top:32px}.tema-h{font-size:1rem;line-height:1.18}}
 </style>
 
 <div class="cielo"></div>
@@ -1046,6 +1053,12 @@
         <span class="tema-p" data-en="Two traditions">Dos tradiciones</span>
         <span class="tema-abrir"><span class="abre" data-en="Read">Leer</span><span class="cierra" data-en="Close">Cerrar</span><span class="ico mas-i" aria-hidden="true">+</span><span class="ico menos-i" aria-hidden="true">–</span></span>
       </button>
+      <button class="paso tema" type="button" aria-expanded="false" aria-controls="dudas">
+        <span class="num">03</span>
+        <span class="tema-h" data-en="Questions about the system">Dudas sobre el sistema</span>
+        <span class="tema-p" data-en="What people ask me most">Lo que más me preguntan</span>
+        <span class="tema-abrir"><span class="abre" data-en="Read">Leer</span><span class="cierra" data-en="Close">Cerrar</span><span class="ico mas-i" aria-hidden="true">+</span><span class="ico menos-i" aria-hidden="true">–</span></span>
+      </button>
       </div>
     </div>
     <div class="panel" id="vedica" hidden>
@@ -1156,7 +1169,28 @@
     <div class="nota">
       <p data-en="If you know your western chart, because of those 24 degrees your Sun, your ascendant and most of your planets will probably fall in the sign before it. They are two maps with different lenses. Jyotish complements the solar zodiac with the lunar one and the divisional charts, and that is where it enriches the what: who you are and what your real potential is. To that it adds the exact machinery for answering the when.">Si conoces tu carta occidental, por esos 24 grados es probable que tu Sol, tu ascendente y la mayoría de tus planetas caigan en el signo anterior. Son dos mapas con lentes distintos. El jyotish complementa el zodiaco solar con el lunar y las cartas divisorias, y con eso enriquece el qué: quién eres y cuál es tu potencial real. A eso le suma la maquinaria exacta para responder el cuándo.</p>
     
+    </div>
       <button type="button" class="tema-cerrar" data-panel="comparacion"><span data-en="Close">Cerrar</span><span class="ico" aria-hidden="true">–</span></button>
+    </div>
+    <div class="panel" id="dudas" hidden>
+      <div class="faq">
+      <details>
+        <summary data-en="Why does my Vedic sign differ from the one I know?">¿Por qué mi signo védico no es el que conozco?</summary>
+        <p data-en="Because Vedic astrology uses the sidereal zodiac, tied to the constellations, while Western astrology uses the tropical zodiac, tied to the seasons. The two have drifted about 24 degrees apart, so most people move one sign back. What you learned from your western chart still holds. Vedic astrology reads it from a different starting point and adds the lunar zodiac, with &lt;a class=&quot;enlace&quot; href=&quot;#herramientas&quot;&gt;the tools that come with it&lt;/a&gt;: they sharpen who you are and put dates on what is ahead.">Porque la astrología védica usa el zodiaco sideral, atado a las constelaciones, y la occidental usa el tropical, atado a las estaciones. Entre ambos hay unos 24 grados de diferencia, así que la mayoría de las personas retrocede un signo. Lo que aprendiste de tu carta occidental sigue sirviendo. La védica la lee desde otro punto de partida y le suma el zodiaco lunar, con <a class="enlace" href="#herramientas">las herramientas que trae</a>: afinan quién eres y le ponen fechas a lo que viene.</p>
+      </details>
+      <details id="faq-ayanamsa">
+        <summary data-en="Why are the two zodiacs 24 degrees apart?">¿Por qué hay 24 grados de diferencia entre los dos zodiacos?</summary>
+        <p data-en="Because the Earth&#39;s axis wobbles. As well as spinning on itself, the Earth nods very slowly, like a spinning top, taking around 26,000 years to complete that movement. It is called the precession of the equinoxes, and it advances about one degree every 72 years.">Porque el eje de la Tierra se bambolea. Además de girar sobre sí misma, la Tierra cabecea muy lentamente, como un trompo, y tarda unos 26.000 años en completar ese movimiento. Se llama precesión de los equinoccios, y avanza cerca de un grado cada 72 años.</p>
+        <p data-en="Imagine you are in the middle of a room. On the wall there are twelve pictures, the constellations, and in front of you a lit lamp, the Sun. The March equinox is the day the Sun crosses the equator and night lasts as long as day. Around one thousand seven hundred years ago, on that day, the lamp sat right in front of the picture of Aries. Today it sits in front of Pisces.">Imagina que estás en el centro de una sala. En la pared hay doce cuadros, las constelaciones, y frente a ti una lámpara encendida, el Sol. El equinoccio de marzo es el día en que el Sol cruza el ecuador y la noche dura lo mismo que el día. Hace unos mil setecientos años, ese día la lámpara quedaba justo delante del cuadro de Aries. Hoy queda delante del de Piscis.</p>
+        <p data-en="That is where the two schools part. The tropical one takes the seasons as its reference, so for it the March equinox is still 0&#176; Aries. The Vedic one takes the stars, and subtracts the accumulated difference, today around 24 degrees. That difference is the ayanamsa.">Ahí se separan las dos escuelas. La tropical toma como referencia las estaciones, así que para ella el equinoccio de marzo sigue siendo el 0&#176; de Aries. La védica toma como referencia las estrellas y descuenta la diferencia acumulada, que hoy son unos 24 grados. Esa diferencia es el <em>ayanamsa</em>.</p>
+      </details>
+      <details id="faq-exteriores">
+        <summary data-en="Do you use Uranus, Neptune and Pluto?">¿Usas Urano, Neptuno y Plutón?</summary>
+        <p data-en="Yes, with a narrower view than Western astrology takes. The Vedic tradition leaves them outside the personal chart because they are generational: Pluto spends more than a decade in each sign, so millions of people share it. It is a bit like talking about millennials. The generation exists, it leaves a mark, and that mark does shape each person.">Sí, con una mirada más acotada que la de la astrología occidental. La tradición védica los deja fuera de la carta personal porque son generacionales: Plutón pasa más de una década en cada signo, así que millones de personas lo tienen igual. Es parecido a hablar de los millennials. La generación existe, deja una marca, y esa marca igual influye en cada persona.</p>
+        <p data-en="So I treat them as co-rulers rather than sole rulers, I look only at the opposition and not at the special aspects that Mars, Jupiter and Saturn do have, and they do not enter the dashas, which is where your timing is calculated.">Por eso los considero como co-regentes y no como regentes únicos, les miro solo la oposición y no los aspectos especiales que sí tienen Marte, Júpiter y Saturno, y no entran en los dashas, que es donde se calculan tus tiempos.</p>
+      </details>
+      </div>
+      <button type="button" class="tema-cerrar" data-panel="dudas"><span data-en="Close">Cerrar</span><span class="ico" aria-hidden="true">–</span></button>
     </div>
   </div>
 </section>
@@ -1181,21 +1215,6 @@
           <li data-en="&lt;strong&gt;The clinic or hospital where you were born.&lt;/strong&gt; Under Law 20.584 you have the right to a copy of your own clinical record, and the first copy is free. The time of delivery is written there. You request it in writing at the patient services office with your ID; a reasonable timeframe is fifteen to thirty working days. If the place has closed or the records are very old, it may no longer exist."><strong>La clínica u hospital donde naciste.</strong> Por la Ley 20.584 tienes derecho a una copia de tu propia ficha clínica, y la primera copia es gratis. Ahí queda escrita la hora del parto. Se solicita por escrito en la oficina de atención al paciente con tu RUT, y un plazo razonable es de quince a treinta días hábiles. Si el recinto cerró o los registros son muy antiguos, puede que ya no exista.</li>
         </ol>
         <p data-en="And if it turns up nowhere, the Moon reading works with your date and place. What I will not do is give you dates without your time, because anyone who promises them without it is not calculating them.">Y si no aparece por ningún lado, la Lectura de la Luna trabaja con tu fecha y tu lugar. Lo que no voy a hacer es darte fechas sin tu hora, porque quien te las promete sin ese dato no las está calculando.</p>
-      </details>
-      <details>
-        <summary data-en="Why does my Vedic sign differ from the one I know?">¿Por qué mi signo védico no es el que conozco?</summary>
-        <p data-en="Because Vedic astrology uses the sidereal zodiac, tied to the constellations, while Western astrology uses the tropical zodiac, tied to the seasons. The two have drifted about 24 degrees apart, so most people move one sign back. What you learned from your western chart still holds. Vedic astrology reads it from a different starting point and adds the lunar zodiac, with &lt;a class=&quot;enlace&quot; href=&quot;#herramientas&quot;&gt;the tools that come with it&lt;/a&gt;: they sharpen who you are and put dates on what is ahead.">Porque la astrología védica usa el zodiaco sideral, atado a las constelaciones, y la occidental usa el tropical, atado a las estaciones. Entre ambos hay unos 24 grados de diferencia, así que la mayoría de las personas retrocede un signo. Lo que aprendiste de tu carta occidental sigue sirviendo. La védica la lee desde otro punto de partida y le suma el zodiaco lunar, con <a class="enlace" href="#herramientas">las herramientas que trae</a>: afinan quién eres y le ponen fechas a lo que viene.</p>
-      </details>
-      <details id="faq-ayanamsa">
-        <summary data-en="Why are the two zodiacs 24 degrees apart?">¿Por qué hay 24 grados de diferencia entre los dos zodiacos?</summary>
-        <p data-en="Because the Earth&#39;s axis wobbles. As well as spinning on itself, the Earth nods very slowly, like a spinning top, taking around 26,000 years to complete that movement. It is called the precession of the equinoxes, and it advances about one degree every 72 years.">Porque el eje de la Tierra se bambolea. Además de girar sobre sí misma, la Tierra cabecea muy lentamente, como un trompo, y tarda unos 26.000 años en completar ese movimiento. Se llama precesión de los equinoccios, y avanza cerca de un grado cada 72 años.</p>
-        <p data-en="Imagine you are in the middle of a room. On the wall there are twelve pictures, the constellations, and in front of you a lit lamp, the Sun. The March equinox is the day the Sun crosses the equator and night lasts as long as day. Around one thousand seven hundred years ago, on that day, the lamp sat right in front of the picture of Aries. Today it sits in front of Pisces.">Imagina que estás en el centro de una sala. En la pared hay doce cuadros, las constelaciones, y frente a ti una lámpara encendida, el Sol. El equinoccio de marzo es el día en que el Sol cruza el ecuador y la noche dura lo mismo que el día. Hace unos mil setecientos años, ese día la lámpara quedaba justo delante del cuadro de Aries. Hoy queda delante del de Piscis.</p>
-        <p data-en="That is where the two schools part. The tropical one takes the seasons as its reference, so for it the March equinox is still 0&#176; Aries. The Vedic one takes the stars, and subtracts the accumulated difference, today around 24 degrees. That difference is the ayanamsa.">Ahí se separan las dos escuelas. La tropical toma como referencia las estaciones, así que para ella el equinoccio de marzo sigue siendo el 0&#176; de Aries. La védica toma como referencia las estrellas y descuenta la diferencia acumulada, que hoy son unos 24 grados. Esa diferencia es el <em>ayanamsa</em>.</p>
-      </details>
-      <details id="faq-exteriores">
-        <summary data-en="Do you use Uranus, Neptune and Pluto?">¿Usas Urano, Neptuno y Plutón?</summary>
-        <p data-en="Yes, with a narrower view than Western astrology takes. The Vedic tradition leaves them outside the personal chart because they are generational: Pluto spends more than a decade in each sign, so millions of people share it. It is a bit like talking about millennials. The generation exists, it leaves a mark, and that mark does shape each person.">Sí, con una mirada más acotada que la de la astrología occidental. La tradición védica los deja fuera de la carta personal porque son generacionales: Plutón pasa más de una década en cada signo, así que millones de personas lo tienen igual. Es parecido a hablar de los millennials. La generación existe, deja una marca, y esa marca igual influye en cada persona.</p>
-        <p data-en="So I treat them as co-rulers rather than sole rulers, I look only at the opposition and not at the special aspects that Mars, Jupiter and Saturn do have, and they do not enter the dashas, which is where your timing is calculated.">Por eso los considero como co-regentes y no como regentes únicos, les miro solo la oposición y no los aspectos especiales que sí tienen Marte, Júpiter y Saturno, y no entran en los dashas, que es donde se calculan tus tiempos.</p>
       </details>
       <details>
         <summary data-en="Are sessions online or in person?">¿Las sesiones son online o presenciales?</summary>
@@ -1375,6 +1394,7 @@
     try { el = document.querySelector(h); } catch(e){ return; }
     if (!el) return;
     if (el.tagName === 'DETAILS') el.open = true;
+    var pnl = el.closest('.panel'); if (pnl && pnl !== el && pnl.hidden){ var bp = document.querySelector('.tema[aria-controls="' + pnl.id + '"]'); if (bp) bp.click(); }
     if (el.classList.contains('panel')){ var bt = document.querySelector('.tema[aria-controls="' + el.id + '"]'); if (bt && bt.getAttribute('aria-expanded') !== 'true') bt.click(); }
     setTimeout(function(){ el.scrollIntoView({behavior:'smooth', block:'center'}); }, 60);
   }
