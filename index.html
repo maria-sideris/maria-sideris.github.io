@@ -1702,7 +1702,11 @@
           setTimeout(function(){
             cartas.forEach(function(c){ c.classList.add('revelando'); });
             sincronizar();
-            setTimeout(function(){ cartas.forEach(function(c){ c.classList.remove('revelando'); }); bloqueoCursor = false; }, 2000);
+            setTimeout(function(){
+              cartas.forEach(function(c){ c.classList.remove('revelando'); }); bloqueoCursor = false;
+              /* si el cursor quedo quieto sobre otra carta durante la revelacion, esa se abre ahora sin esperar a que se mueva */
+              if (sobre && !sobre.classList.contains('abierta')) { bajoCursor = sobre; sincronizar(); }
+            }, 2000);
           }, 550);
         }
       }, {threshold: 0.35});
