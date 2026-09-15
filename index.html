@@ -183,6 +183,41 @@
     .hero-sub{margin-inline:auto}
     .hero-acciones{justify-content:center}}
 
+
+  /* ---- lecturas como cartas de un mazo: dos caras ---- */
+  /* la pista recorta lo que sobresale: durante el giro el canto cercano de la carta crece unos
+     pixeles, asi que la pista reserva mas aire arriba y lo descuenta del margen para que el hueco
+     bajo el titulo no cambie */
+  #servicios .pista{padding-top:34px}
+  #servicios .cabecera + .carrusel:not(.quieto){margin-top:-34px}
+  .servicio{perspective:2400px;background:none !important;border:0 !important;box-shadow:none !important;
+    backdrop-filter:none !important;-webkit-backdrop-filter:none !important;padding:0 !important;overflow:visible;display:block}
+  .naipe{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform 1.2s cubic-bezier(.3,.05,.2,1)}
+  .servicio.abierta .naipe{transform:rotateY(180deg)}
+  .servicio.revelando .naipe{transition-duration:1.8s;transition-timing-function:cubic-bezier(.3,.05,.2,1)}
+  .naipe .cara{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+    border-radius:6px;padding:28px 26px 26px;box-sizing:border-box;
+    background:linear-gradient(180deg,rgba(40,68,110,.34) 0%,rgba(9,19,36,.46) 58%,rgba(4,10,24,.52) 100%);
+    border:1px solid rgba(168,200,234,.18);
+    box-shadow:inset 0 1px 0 rgba(212,232,255,.13),inset 0 -1px 0 rgba(0,0,0,.32),0 30px 52px -26px rgba(0,0,0,.88),0 10px 22px -12px rgba(0,0,0,.55);
+    transition:border-color .25s,box-shadow .25s}
+  .servicio:hover{transform:none !important}
+  .servicio:hover .cara{border-color:rgba(168,200,234,.32);
+    box-shadow:inset 0 1px 0 rgba(218,238,255,.18),inset 0 -1px 0 rgba(0,0,0,.32),0 44px 64px -28px rgba(0,0,0,.92),0 14px 28px -14px rgba(0,0,0,.6)}
+  .naipe .tras{transform:rotateY(180deg);display:flex;flex-direction:column;gap:13px}
+  .naipe .tras > p:not(.duracion){flex:1}
+  .naipe .tras .pie{margin-top:auto}
+  /* cara cerrada: centrada, con el sello de la estrella arriba */
+  .naipe .frente{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer;padding-top:20px;padding-bottom:44px}
+  .naipe .frente .sello{width:64px;height:64px;opacity:.95;margin:14px 0 14px;display:block;filter:drop-shadow(0 0 5px rgba(168,200,234,.35))}
+  .naipe .frente .duracion{display:block;position:absolute;top:28px;left:26px;right:26px;margin:0}
+  .naipe .frente h3{margin:0 0 12px;line-height:1.2;display:flex;align-items:flex-end;justify-content:center}
+  .naipe .frente .eslogan{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:1.2rem;color:var(--oro-claro);margin:0;line-height:1.4}
+  .naipe .frente .precio{font-size:1.2rem}
+  .naipe .frente .abrir{position:absolute;bottom:18px;left:0;right:0;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tenue);opacity:.7}
+  .naipe .frente .abrir::after{content:" +"}
+  @media (prefers-reduced-motion:reduce){.naipe{transition:none}}
+  @media (max-width:620px){.naipe .cara{padding:22px}}
   /* separador que se desvanece en los bordes: ordena sin llamar la atención */
   section{padding:76px 0;position:relative}
   section::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
@@ -809,6 +844,7 @@
   </div>
 </nav>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="estrella-sideris" viewBox="450.7 -23.3 2397.2 2397.2"><defs><clipPath id="sello-lgs-045ffe6455"><path d="M 0.519531 0.371094 L 2116 0.371094 L 2116 2178 L 0.519531 2178 Z M 0.519531 0.371094 " clip-rule="nonzero"/></clipPath><clipPath id="sello-lgs-d83c568e13"><path d="M 828.886719 863.886719 L 1282.734375 863.886719 L 1282.734375 1317.734375 L 828.886719 1317.734375 Z M 828.886719 863.886719 " clip-rule="nonzero"/></clipPath><clipPath id="sello-lgs-225d5a73dd"><path d="M 919.351562 954.351562 L 1191.867188 954.351562 L 1191.867188 1226.867188 L 919.351562 1226.867188 Z M 919.351562 954.351562 " clip-rule="nonzero"/></clipPath><clipPath id="sello-lgs-cd58f33690"><path d="M 994.351562 1029.351562 L 1117.292969 1029.351562 L 1117.292969 1152.292969 L 994.351562 1152.292969 Z M 994.351562 1029.351562 " clip-rule="nonzero"/></clipPath><clipPath id="sello-lgs-e3e573b670"><rect x="0" width="2122" y="0" height="2183"/></clipPath></defs><g transform="matrix(1, 0, 0, 1, 592, 86)"><g clip-path="url(#sello-lgs-e3e573b670)"><g clip-path="url(#sello-lgs-045ffe6455)"><path fill="#bebfbf" d="M 1042.300781 1950.957031 C 1035.148438 1788.554688 1024.152344 1568.207031 1017.921875 1461.210938 C 1006.648438 1269.175781 1006.101562 1267.261719 974.261719 1309.097656 C 947.519531 1347.28125 923.492188 1387.097656 902.171875 1428.554688 C 880.230469 1470.9375 855.28125 1509.96875 846.6875 1515.269531 C 838.09375 1520.570312 864.25 1458.90625 904.832031 1378.199219 C 945.410156 1297.492188 975.90625 1228.816406 972.75 1225.613281 C 966.65625 1219.515625 842.324219 1332.878906 616.171875 1550.960938 C 541.132812 1623.316406 473.945312 1682.546875 466.875 1682.546875 C 459.804688 1682.546875 558.832031 1571.890625 686.96875 1436.636719 C 815.105469 1301.382812 917.554688 1188.324219 914.679688 1185.449219 C 911.800781 1182.570312 847.964844 1208.207031 772.855469 1242.433594 C 697.742188 1276.660156 636.332031 1302.160156 636.332031 1299.101562 C 636.332031 1296.042969 689.175781 1262.632812 753.753906 1224.867188 C 847.199219 1170.222656 864.484375 1153.730469 838.410156 1144.089844 C 820.394531 1137.410156 656.789062 1126.023438 474.933594 1118.757812 C -90.203125 1096.234375 -139.21875 1083.910156 269.421875 1067.285156 C 466.265625 1059.273438 683.703125 1047.195312 752.597656 1040.46875 L 877.867188 1028.203125 L 791.25 975.070312 C 743.601562 945.816406 691.296875 911.878906 674.925781 899.496094 C 648.449219 879.519531 649.121094 878.410156 681.019531 889.207031 C 706.039062 898.472656 729.898438 910.113281 752.597656 924.132812 C 786.964844 943.917969 822.484375 961.355469 859.15625 976.449219 C 927.5625 1004.996094 929.074219 1004.875 904.378906 972.890625 C 890.324219 954.691406 818.210938 876.496094 744.125 799.128906 C 584.625 632.597656 590.964844 639.421875 501.203125 537.203125 C 432.574219 459.054688 743.332031 735.425781 833.132812 832.40625 C 861.917969 862.714844 893.019531 890.421875 926.441406 915.523438 L 975.003906 950.328125 L 927.941406 846.714844 C 905.988281 797.28125 881.53125 749.117188 854.574219 702.222656 C 840.117188 679.769531 831.949219 657.730469 836.433594 653.257812 C 840.921875 648.785156 871.980469 693.8125 905.464844 753.34375 C 938.949219 812.878906 975.429688 869.144531 986.535156 878.335938 C 1007.964844 896.132812 1017.398438 785.511719 1042.300781 224.082031 C 1055.929688 -83.09375 1080.636719 -71.160156 1082.636719 243.582031 C 1084.394531 517.308594 1106.332031 895.109375 1120.523438 895.109375 C 1127.835938 895.109375 1158.929688 850.8125 1189.488281 796.679688 C 1220.046875 742.546875 1248.570312 698.25 1252.875 698.25 C 1257.175781 698.25 1236.054688 750.992188 1205.882812 815.449219 C 1175.714844 879.90625 1154.089844 935.710938 1157.820312 939.441406 C 1164.453125 946.085938 1293.660156 828.394531 1535.511719 595.441406 C 1601.957031 531.4375 1656.308594 486.496094 1656.308594 495.550781 C 1656.308594 504.609375 1623.398438 543.871094 1583.171875 582.777344 C 1542.945312 621.6875 1437.214844 732.257812 1348.160156 828.480469 C 1176.386719 1014.078125 1178.042969 1017.417969 1390.824219 913.28125 C 1517.140625 851.507812 1480.476562 891.339844 1348.84375 958.835938 C 1302.789062 982.46875 1260.761719 1008.8125 1255.445312 1017.441406 C 1243.914062 1036.101562 1432.277344 1051.816406 1875.488281 1069.171875 C 2251.199219 1083.886719 2191.386719 1097.085938 1656.273438 1117.515625 C 1484.035156 1124.097656 1319.84375 1134.019531 1291.308594 1139.554688 L 1239.515625 1149.636719 L 1322.574219 1201.332031 C 1368.261719 1229.757812 1412.777344 1253.027344 1421.394531 1253.027344 C 1430.011719 1253.027344 1448.003906 1266.105469 1461.277344 1282.097656 C 1474.550781 1298.089844 1418.078125 1277.332031 1335.789062 1235.949219 C 1188.574219 1161.933594 1186.808594 1161.59375 1225.742188 1211.351562 C 1247.5 1239.191406 1326.71875 1326.394531 1401.78125 1405.164062 C 1476.84375 1483.929688 1570.847656 1584.101562 1610.683594 1627.828125 L 1683.113281 1707.339844 L 1617.121094 1651.71875 C 1533.085938 1580.910156 1304.144531 1364.472656 1255.203125 1309.5625 C 1245.207031 1298.25 1234.480469 1287.683594 1223.019531 1277.863281 C 1211.558594 1268.039062 1199.476562 1259.054688 1186.773438 1250.90625 C 1159.527344 1236.277344 1157.773438 1239.59375 1172.484375 1278.28125 C 1181.714844 1302.539062 1210.273438 1363.960938 1236.066406 1414.804688 C 1305.4375 1551.703125 1281.238281 1538.320312 1200.632812 1395.214844 C 1162.136719 1326.882812 1125.347656 1270.980469 1118.851562 1270.980469 C 1106.152344 1270.980469 1084.453125 1657.558594 1082.285156 1922.53125 C 1079.628906 2248.609375 1056.101562 2265.34375 1042.242188 1951.015625 Z M 1042.300781 1950.957031 " fill-opacity="1" fill-rule="nonzero"/></g><path fill="#232225" d="M 1049.394531 1497.304688 C 1046.011719 1420.550781 1040.816406 1316.410156 1037.871094 1265.839844 C 1032.542969 1175.078125 1032.285156 1174.175781 1017.234375 1193.945312 C 1004.597656 1211.992188 993.242188 1230.8125 983.164062 1250.40625 C 972.792969 1270.4375 961.003906 1288.882812 956.941406 1291.386719 C 952.878906 1293.894531 965.242188 1264.75 984.421875 1226.605469 C 1003.597656 1188.460938 1018.011719 1156.003906 1016.519531 1154.488281 C 1013.640625 1151.609375 954.878906 1205.1875 847.992188 1308.257812 C 812.527344 1342.453125 780.773438 1370.449219 777.433594 1370.449219 C 774.089844 1370.449219 820.894531 1318.148438 881.453125 1254.222656 C 942.011719 1190.300781 990.433594 1136.867188 989.074219 1135.507812 C 987.714844 1134.144531 957.546875 1146.261719 922.046875 1162.4375 C 886.546875 1178.617188 857.523438 1190.667969 857.523438 1189.222656 C 857.523438 1187.777344 882.496094 1171.984375 913.019531 1154.136719 C 957.183594 1128.308594 965.351562 1120.515625 953.027344 1115.957031 C 944.515625 1112.800781 867.1875 1107.421875 781.238281 1103.988281 C 514.140625 1093.339844 490.976562 1087.515625 684.109375 1079.660156 C 777.144531 1075.875 879.910156 1070.164062 912.472656 1066.984375 L 971.675781 1061.1875 L 930.738281 1036.074219 C 908.21875 1022.25 883.5 1006.210938 875.761719 1000.359375 C 863.25 990.914062 863.566406 990.390625 878.640625 995.496094 C 890.464844 999.875 901.742188 1005.375 912.472656 1012 C 928.714844 1021.351562 945.5 1029.59375 962.835938 1036.726562 C 995.164062 1050.21875 995.878906 1050.160156 984.207031 1035.042969 C 977.566406 1026.445312 943.484375 989.488281 908.46875 952.921875 C 833.082031 874.214844 836.078125 877.441406 793.65625 829.128906 C 761.21875 792.195312 908.09375 922.8125 950.535156 968.648438 C 964.140625 982.972656 978.839844 996.066406 994.636719 1007.933594 L 1017.585938 1024.382812 L 995.34375 975.414062 C 984.96875 952.046875 973.410156 929.285156 960.667969 907.121094 C 953.835938 896.507812 949.976562 886.09375 952.09375 883.980469 C 954.214844 881.863281 968.894531 903.144531 984.71875 931.28125 C 1000.546875 959.417969 1017.789062 986.011719 1023.035156 990.355469 C 1033.164062 998.765625 1037.625 946.484375 1049.394531 681.136719 C 1055.835938 535.960938 1067.511719 541.597656 1068.457031 690.355469 C 1069.285156 819.726562 1079.65625 998.285156 1086.363281 998.285156 C 1089.820312 998.285156 1104.515625 977.347656 1118.957031 951.761719 C 1133.402344 926.179688 1146.882812 905.242188 1148.914062 905.242188 C 1150.949219 905.242188 1140.964844 930.171875 1126.707031 960.636719 C 1112.449219 991.101562 1102.226562 1017.472656 1103.992188 1019.238281 C 1107.125 1022.375 1168.191406 966.753906 1282.496094 856.652344 C 1313.902344 826.402344 1339.589844 805.160156 1339.589844 809.441406 C 1339.589844 813.722656 1324.035156 832.277344 1305.023438 850.667969 C 1286.011719 869.058594 1236.039062 921.316406 1193.949219 966.792969 C 1112.765625 1054.511719 1113.550781 1056.089844 1214.113281 1006.875 C 1273.816406 977.675781 1256.484375 996.503906 1194.273438 1028.402344 C 1172.507812 1039.574219 1152.644531 1052.023438 1150.132812 1056.101562 C 1144.679688 1064.921875 1233.707031 1072.347656 1443.179688 1080.550781 C 1620.75 1087.503906 1592.480469 1093.746094 1339.570312 1103.398438 C 1258.167969 1106.511719 1180.566406 1111.199219 1167.082031 1113.816406 L 1142.601562 1118.582031 L 1181.859375 1143.011719 C 1203.449219 1156.449219 1224.488281 1167.445312 1228.5625 1167.445312 C 1232.636719 1167.445312 1241.140625 1173.625 1247.414062 1181.183594 C 1253.6875 1188.742188 1226.996094 1178.933594 1188.101562 1159.375 C 1118.527344 1124.394531 1117.691406 1124.230469 1136.09375 1147.75 C 1146.375 1160.90625 1183.816406 1202.121094 1219.292969 1239.347656 C 1254.769531 1276.578125 1299.199219 1323.921875 1318.027344 1344.585938 L 1352.257812 1382.164062 L 1321.066406 1355.878906 C 1281.351562 1322.410156 1173.148438 1220.117188 1150.015625 1194.164062 C 1140.523438 1183.421875 1129.742188 1174.183594 1117.675781 1166.441406 C 1104.796875 1159.53125 1103.96875 1161.097656 1110.921875 1179.382812 C 1115.28125 1190.847656 1128.78125 1219.875 1140.972656 1243.90625 C 1173.757812 1308.609375 1162.320312 1302.28125 1124.222656 1234.648438 C 1106.03125 1202.351562 1088.644531 1175.929688 1085.574219 1175.929688 C 1079.570312 1175.929688 1069.316406 1358.636719 1068.289062 1483.871094 C 1067.035156 1637.984375 1055.914062 1645.894531 1049.363281 1497.335938 Z M 1049.394531 1497.304688 " fill-opacity="1" fill-rule="nonzero"/><g clip-path="url(#sello-lgs-d83c568e13)"><path fill="#333744" d="M 1061.457031 863.886719 L 1080.554688 1039.230469 L 1149.09375 993.507812 L 1107.21875 1065.898438 L 1282.554688 1090.675781 L 1114.722656 1113.472656 C 1109.640625 1117.4375 1111.113281 1118.214844 1112.863281 1123.128906 C 1115.023438 1129.183594 1155.703125 1181.679688 1152.953125 1184.082031 L 1080.5625 1142.210938 L 1059.578125 1317.601562 L 1034.761719 1138.375 L 962.433594 1187.933594 L 1004.304688 1115.554688 L 828.949219 1090.71875 L 1004.304688 1065.890625 L 962.429688 993.507812 L 1034.75 1039.238281 L 1053.851562 869.539062 Z M 1061.457031 863.886719 " fill-opacity="1" fill-rule="nonzero"/></g><g clip-path="url(#sello-lgs-225d5a73dd)"><path fill="#c0c1c0" d="M 1059.179688 954.351562 L 1070.660156 1059.773438 L 1111.867188 1032.28125 L 1086.691406 1075.804688 L 1192.109375 1090.703125 L 1091.203125 1104.410156 C 1088.148438 1106.792969 1089.03125 1107.261719 1090.085938 1110.214844 C 1091.382812 1113.855469 1115.839844 1145.414062 1114.1875 1146.859375 L 1070.664062 1121.6875 L 1058.050781 1227.132812 L 1043.128906 1119.382812 L 999.644531 1149.175781 L 1024.816406 1105.660156 L 919.390625 1090.730469 L 1024.816406 1075.800781 L 999.640625 1032.28125 L 1043.121094 1059.777344 L 1054.605469 957.75 Z M 1059.179688 954.351562 " fill-opacity="1" fill-rule="nonzero"/></g><g clip-path="url(#sello-lgs-cd58f33690)"><path fill="#231f20" d="M 1057.296875 1029.351562 L 1062.464844 1076.808594 L 1081.011719 1064.433594 L 1069.679688 1084.023438 L 1117.132812 1090.730469 L 1071.710938 1096.902344 C 1070.335938 1097.972656 1070.734375 1098.183594 1071.207031 1099.515625 C 1071.792969 1101.152344 1082.800781 1115.359375 1082.058594 1116.011719 L 1062.464844 1104.679688 L 1056.789062 1152.144531 L 1050.070312 1103.640625 L 1030.496094 1117.054688 L 1041.828125 1097.464844 L 994.371094 1090.742188 L 1041.828125 1084.023438 L 1030.496094 1064.433594 L 1050.066406 1076.808594 L 1055.238281 1030.882812 Z M 1057.296875 1029.351562 " fill-opacity="1" fill-rule="nonzero"/></g></g></g></symbol></svg>
 <header id="inicio">
   <div class="env hero">
     <div>
@@ -874,7 +910,7 @@
         <button class="flecha" type="button" data-dir="1" aria-label="Ver siguientes" data-en-aria="Show next">&#8250;</button>
       </div>
       <div class="servicios pista" tabindex="0" role="group" aria-label="Lecturas" data-en-aria="Readings">
-      <article class="servicio">
+      <article class="servicio"><div class="naipe"><div class="cara frente" aria-hidden="true"><p class="duracion" data-en="&lt;span&gt;Foundational reading&lt;/span&gt;"><span>Lectura fundacional</span></p><h3 data-en="Full Vedic birth chart">Carta astral védica completa</h3><p class="eslogan" data-en="Where it makes sense to start.">Por donde conviene empezar.</p><svg class="sello" aria-hidden="true" focusable="false"><use href="#estrella-sideris"/></svg><span class="precio">$95.000<small data-en="CLP · approx. USD 103">CLP · aprox. USD 103</small></span><span class="abrir" data-en="Open">Abrir</span></div><div class="cara tras">
         <p class="duracion" data-en="&lt;span&gt;Foundational reading&lt;/span&gt;&lt;span class=&quot;min&quot;&gt;90 min&lt;/span&gt;"><span>Lectura fundacional</span><span class="min">90 min</span></p>
         <h3 data-en="Full Vedic birth chart">Carta astral védica completa</h3>
         <p data-en="I look at your ascendant, the Sun, the Moon and the other planets (grahas), the divisional charts for the areas that matter to you today, and the cycle (dasha) you are going through. It is the reading to start with.">Miro tu ascendente, el Sol, la Luna y los demás planetas (grahas), las cartas divisorias de los temas que hoy te importan y el ciclo (dasha) que estás atravesando. Es la lectura por donde conviene empezar.</p>
@@ -882,9 +918,9 @@
           <span class="precio">$95.000<small data-en="CLP · approx. USD 103">CLP · aprox. USD 103</small></span>
           <a class="reservar" href="https://wa.me/56977144037?text=Hola%2C%20quiero%20agendar%20una%20carta%20astral%20v%C3%A9dica" data-wa-en="Hi, I would like to book a full Vedic birth chart reading" target="_blank" rel="noopener" data-en="Book →">Agendar →</a>
         </div>
-      </article>
+      </div></div></article>
 
-      <article class="servicio">
+      <article class="servicio"><div class="naipe"><div class="cara frente" aria-hidden="true"><p class="duracion" data-en="&lt;span&gt;Two charts&lt;/span&gt;"><span>Dos cartas</span></p><h3 data-en="Vedic synastry">Sinastría védica</h3><p class="eslogan" data-en="Compatibility with another.">Compatibilidad con un otro.</p><svg class="sello" aria-hidden="true" focusable="false"><use href="#estrella-sideris"/></svg><span class="precio">$110.000<small data-en="CLP · approx. USD 119">CLP · aprox. USD 119</small></span><span class="abrir" data-en="Open">Abrir</span></div><div class="cara tras">
         <p class="duracion" data-en="&lt;span&gt;Two charts&lt;/span&gt;&lt;span class=&quot;min&quot;&gt;90 min&lt;/span&gt;"><span>Dos cartas</span><span class="min">90 min</span></p>
         <h3 data-en="Vedic synastry">Sinastría védica</h3>
         <p data-en="I look at your chart and the other person&#x27;s to see where you flow and where you rub. I analyse the relationship charts (navamsha), your compatibility (ashta kuta) and the cycle (dasha) each of you is in, because two people rarely share the same season.">Miro tu carta y la de la otra persona para ver dónde fluyen y dónde rozan. Analizo las cartas del vínculo (navamsha), su compatibilidad (ashta kuta) y el ciclo (dasha) de cada uno, porque dos personas rara vez comparten la misma estación.</p>
@@ -892,9 +928,9 @@
           <span class="precio">$110.000<small data-en="CLP · approx. USD 119">CLP · aprox. USD 119</small></span>
           <a class="reservar" href="https://wa.me/56977144037?text=Hola%2C%20quiero%20una%20sinastr%C3%ADa%20v%C3%A9dica" data-wa-en="Hi, I would like a Vedic synastry reading" target="_blank" rel="noopener" data-en="Book →">Agendar →</a>
         </div>
-      </article>
+      </div></div></article>
 
-      <article class="servicio">
+      <article class="servicio"><div class="naipe"><div class="cara frente" aria-hidden="true"><p class="duracion" data-en="&lt;span&gt;Affective map&lt;/span&gt;"><span>Mapa afectivo</span></p><h3 data-en="Love and relationships">Amor y relaciones</h3><p class="eslogan" data-en="What you seek and what keeps repeating.">Qué buscas y qué se te repite.</p><svg class="sello" aria-hidden="true" focusable="false"><use href="#estrella-sideris"/></svg><span class="precio">$80.000<small data-en="CLP · approx. USD 86">CLP · aprox. USD 86</small></span><span class="abrir" data-en="Open">Abrir</span></div><div class="cara tras">
         <p class="duracion" data-en="&lt;span&gt;Affective map&lt;/span&gt;&lt;span class=&quot;min&quot;&gt;75 min&lt;/span&gt;"><span>Mapa afectivo</span><span class="min">75 min</span></p>
         <h3 data-en="Love and relationships">Amor y relaciones</h3>
         <p data-en="I look at your love life through your chart and your relationship chart (navamsha): what you seek, what keeps repeating, and the cycle (dasha) you are going through. To know yourself better, whether or not you are in a relationship.">Miro tu vida amorosa desde tu carta y tu carta del vínculo (navamsha): qué buscas, qué se te repite y qué ciclo (dasha) estás atravesando. Para conocerte mejor, estés o no en pareja.</p>
@@ -902,9 +938,9 @@
           <span class="precio">$80.000<small data-en="CLP · approx. USD 86">CLP · aprox. USD 86</small></span>
           <a class="reservar" href="https://wa.me/56977144037?text=Hola%2C%20quiero%20una%20lectura%20de%20amor%20y%20relaciones" data-wa-en="Hi, I would like a love and relationships reading" target="_blank" rel="noopener" data-en="Book →">Agendar →</a>
         </div>
-      </article>
+      </div></div></article>
 
-      <article class="servicio">
+      <article class="servicio"><div class="naipe"><div class="cara frente" aria-hidden="true"><p class="duracion" data-en="&lt;span&gt;Focused reading&lt;/span&gt;"><span>Lectura enfocada</span></p><h3 data-en="Work and vocation">Trabajo y vocación</h3><p class="eslogan" data-en="What is going on and what may be coming.">Qué pasa y qué puede venir.</p><svg class="sello" aria-hidden="true" focusable="false"><use href="#estrella-sideris"/></svg><span class="precio">$80.000<small data-en="CLP · approx. USD 86">CLP · aprox. USD 86</small></span><span class="abrir" data-en="Open">Abrir</span></div><div class="cara tras">
         <p class="duracion" data-en="&lt;span&gt;Focused reading&lt;/span&gt;&lt;span class=&quot;min&quot;&gt;75 min&lt;/span&gt;"><span>Lectura enfocada</span><span class="min">75 min</span></p>
         <h3 data-en="Work and vocation">Trabajo y vocación</h3>
         <p data-en="I look at your chart, your career chart (dashamsha) and the cycle (dasha) you are going through. To understand what is going on in your working life, what may be coming, and whether it is time to make decisions or take on changes.">Miro tu carta, tu carta de la carrera (dashamsha) y el ciclo (dasha) que estás atravesando. Para comprender qué pasa en tu vida laboral, qué puede venir y si es momento de tomar decisiones o asumir cambios.</p>
@@ -912,9 +948,9 @@
           <span class="precio">$80.000<small data-en="CLP · approx. USD 86">CLP · aprox. USD 86</small></span>
           <a class="reservar" href="https://wa.me/56977144037?text=Hola%2C%20quiero%20una%20lectura%20de%20trabajo%20y%20vocaci%C3%B3n" data-wa-en="Hi, I would like a work and vocation reading" target="_blank" rel="noopener" data-en="Book →">Agendar →</a>
         </div>
-      </article>
+      </div></div></article>
 
-      <article class="servicio">
+      <article class="servicio"><div class="naipe"><div class="cara frente" aria-hidden="true"><p class="duracion" data-en="&lt;span&gt;Your year&lt;/span&gt;"><span>Tu año</span></p><h3 data-en="Vedic solar return">Revolución solar védica</h3><p class="eslogan" data-en="The twelve months ahead.">Los doce meses que vienen.</p><svg class="sello" aria-hidden="true" focusable="false"><use href="#estrella-sideris"/></svg><span class="precio">$80.000<small data-en="CLP · approx. USD 86">CLP · aprox. USD 86</small></span><span class="abrir" data-en="Open">Abrir</span></div><div class="cara tras">
         <p class="duracion" data-en="&lt;span&gt;Your year&lt;/span&gt;&lt;span class=&quot;min&quot;&gt;75 min&lt;/span&gt;"><span>Tu año</span><span class="min">75 min</span></p>
         <h3 data-en="Vedic solar return">Revolución solar védica</h3>
         <p data-en="I look at your annual chart (varshaphala), the current cycle (dasha) and the transits that trigger it to read the twelve months ahead. For planning your year: when to push, when to hold, and when to wait.">Miro tu carta anual (varshaphala), el ciclo (dasha) en curso y los tránsitos que lo activan para leer los doce meses que vienen. Para planificar tu año: cuándo empujar, cuándo sostener y cuándo esperar.</p>
@@ -922,9 +958,9 @@
           <span class="precio">$80.000<small data-en="CLP · approx. USD 86">CLP · aprox. USD 86</small></span>
           <a class="reservar" href="https://wa.me/56977144037?text=Hola%2C%20quiero%20mi%20revoluci%C3%B3n%20solar%20v%C3%A9dica" data-wa-en="Hi, I would like my Vedic solar return reading" target="_blank" rel="noopener" data-en="Book →">Agendar →</a>
         </div>
-      </article>
+      </div></div></article>
 
-      <article class="servicio" id="lectura-luna">
+      <article class="servicio" id="lectura-luna"><div class="naipe"><div class="cara frente" aria-hidden="true"><p class="duracion" data-en="&lt;span&gt;Lunar reading&lt;/span&gt;"><span>Lectura lunar</span></p><h3 data-en="Moon reading">Lectura de la Luna</h3><p class="eslogan" data-en="Your emotional and mental world.">Tu mundo emocional y mental.</p><svg class="sello" aria-hidden="true" focusable="false"><use href="#estrella-sideris"/></svg><span class="precio">$80.000<small data-en="CLP · approx. USD 86">CLP · aprox. USD 86</small></span><span class="abrir" data-en="Open">Abrir</span></div><div class="cara tras">
         <p class="duracion" data-en="&lt;span&gt;Lunar reading&lt;/span&gt;&lt;span class=&quot;min&quot;&gt;75 min&lt;/span&gt;"><span>Lectura lunar</span><span class="min">75 min</span></p>
         <h3 data-en="Moon reading">Lectura de la Luna</h3>
         <p data-en="I look at your Moon, your emotional and mental world: how you process what you live, what unsettles you, and what you need to settle again. I also assess its strength, your lunar mansions (nakshatras) and your cycles (dashas).">Miro tu Luna, tu mundo emocional y mental: cómo procesas lo que vives, qué te desregula y qué necesitas para volver a asentarte. Evalúo también su fuerza, tus mansiones lunares (nakshatras) y tus ciclos (dashas).</p>
@@ -936,9 +972,9 @@
           <span class="precio">$80.000<small data-en="CLP · approx. USD 86">CLP · aprox. USD 86</small></span>
           <a class="reservar" href="https://wa.me/56977144037?text=Hola%2C%20quiero%20una%20lectura%20de%20la%20Luna" data-wa-en="Hi, I would like a Moon reading" target="_blank" rel="noopener" data-en="Book →">Agendar →</a>
         </div>
-      </article>
+      </div></div></article>
 
-      <article class="servicio" id="pregunta-puntual">
+      <article class="servicio" id="pregunta-puntual"><div class="naipe"><div class="cara frente" aria-hidden="true"><p class="duracion" data-en="&lt;span&gt;One question&lt;/span&gt;"><span>Una pregunta</span></p><h3 data-en="A single question">Pregunta puntual</h3><p class="eslogan" data-en="One question, one answer.">Una pregunta, una respuesta.</p><svg class="sello" aria-hidden="true" focusable="false"><use href="#estrella-sideris"/></svg><span class="precio">$40.000<small data-en="CLP · approx. USD 43">CLP · aprox. USD 43</small></span><span class="abrir" data-en="Open">Abrir</span></div><div class="cara tras">
         <p class="duracion" data-en="&lt;span&gt;One question&lt;/span&gt;&lt;span class=&quot;min&quot;&gt;30 min&lt;/span&gt;"><span>Una pregunta</span><span class="min">30 min</span></p>
         <h3 data-en="A single question">Pregunta puntual</h3>
         <p data-en="I answer a single question with the sky of the moment you ask it: this is horary astrology (prashna). You do not need your birth time. For something specific, without a full reading.">Respondo una sola pregunta con el cielo del momento en que la haces: es la astrología horaria (prashna). No necesitas tu hora de nacimiento. Para algo concreto, sin una lectura completa.</p>
@@ -946,7 +982,7 @@
           <span class="precio">$40.000<small data-en="CLP · approx. USD 43">CLP · aprox. USD 43</small></span>
           <a class="reservar" href="https://wa.me/56977144037?text=Hola%2C%20tengo%20una%20pregunta%20puntual" data-wa-en="Hi, I have a single question" target="_blank" rel="noopener" data-en="Book →">Agendar →</a>
         </div>
-      </article>
+      </div></div></article>
       </div>
       <div class="carrusel-puntos" aria-hidden="true"></div>
     </div>
@@ -1482,7 +1518,7 @@
      para que el texto que sigue parta a la misma altura en todos (lecturas, pasos, temas) */
   function igualarTarjetas(){
     var ancha = true; /* se alinea en todas las pantallas: en el telefono la tarjeta que asoma queda a la misma altura */
-    ['.servicio .duracion', '.servicio h3', '.paso h3', '.tema-h', '.herr h3'].forEach(function(sel){
+    ['.frente .duracion', '.tras .duracion', '.frente h3', '.tras h3', '.frente .eslogan', '.paso h3', '.tema-h', '.herr h3'].forEach(function(sel){
       var els = Array.prototype.slice.call(document.querySelectorAll(sel));
       els.forEach(function(e){ e.style.minHeight = ''; });
       if (!ancha || els.length < 2) return;
@@ -1587,6 +1623,100 @@
     estado(); armarPuntos(); marcar();
   });
 
+
+  /* ---- mazo de lecturas: la carta activa del carrusel se abre, las demas se cierran ---- */
+  (function(){
+    var cartas = Array.prototype.slice.call(document.querySelectorAll('.servicio'));
+    if (!cartas.length) return;
+    function altura(){
+      /* se mide la cara abierta en flujo normal (como la tarjeta actual) y esa es la altura del naipe */
+      var alto = 0;
+      cartas.forEach(function(c){ c.style.height = 'auto'; var t = c.querySelector('.tras'); t.style.position = 'relative'; t.style.transform = 'none'; });
+      cartas.forEach(function(c){ alto = Math.max(alto, c.querySelector('.tras').offsetHeight); });
+      cartas.forEach(function(c){ var t = c.querySelector('.tras'); t.style.position = ''; t.style.transform = ''; c.style.height = Math.ceil(alto) + 'px'; });
+    }
+    /* una sola carta abierta a la vez: la elegida (clic), si no la que esta bajo el cursor, si no la activa del carrusel */
+    var elegida = null, bajoCursor = null, sobre = null; /* sobre: la carta bajo el cursor ahora mismo */
+    function abiertaAhora(){
+      if (bajoCursor) return bajoCursor;
+      if (elegida === 'ninguna') return null;
+      if (elegida) return elegida;
+      return cartas.find(function(c){ return c.classList.contains('activo'); }) || null;
+    }
+    var seccion = cartas[0].closest('section') || document;
+    function marcarPunto(ab){
+      /* la estrellita del carrusel sigue a la carta abierta: cada parada equivale a una carta,
+         salvo la ultima, que agrupa a las que ya no pueden quedar primeras */
+      var puntos = Array.prototype.slice.call(seccion.querySelectorAll('.carrusel-puntos .punto'));
+      if (!puntos.length) return;
+      var k = ab ? cartas.indexOf(ab) : cartas.findIndex(function(c){ return c.classList.contains('activo'); });
+      if (k < 0) return;
+      var d = Math.min(k, puntos.length - 1);
+      puntos.forEach(function(b, i){ b.setAttribute('aria-current', i === d ? 'true' : 'false'); });
+    }
+    var revelada = false; /* la primera carta se abre cuando la seccion entra en pantalla */
+    function sincronizar(){
+      var ab = revelada ? abiertaAhora() : null;
+      cartas.forEach(function(c){ c.classList.toggle('abierta', c === ab); });
+      marcarPunto(revelada ? ab : null);
+    }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(es){
+        if (es.some(function(e){ return e.isIntersecting; })) {
+          revelada = true; io.disconnect();
+          /* primer giro mas lento y con una pausa antes, para que se entienda la dinamica */
+          setTimeout(function(){
+            cartas.forEach(function(c){ c.classList.add('revelando'); });
+            sincronizar();
+            setTimeout(function(){ cartas.forEach(function(c){ c.classList.remove('revelando'); }); }, 2000);
+          }, 550);
+        }
+      }, {threshold: 0.35});
+      io.observe(cartas[0].parentElement);
+    } else { revelada = true; }
+    var conCursor = window.matchMedia('(hover:hover)').matches;
+    cartas.forEach(function(c){
+      c.addEventListener('click', function(e){
+        if (e.target.closest('a, details, summary, button')) return;
+        var base = (elegida === 'ninguna') ? null : (elegida || cartas.find(function(x){ return x.classList.contains('activo'); }));
+        elegida = (base === c) ? 'ninguna' : c;
+        bajoCursor = null; enPausa = false; clearTimeout(pausaTactil); sincronizar();
+      });
+      if (conCursor) {
+        /* la carta que recibe el cursor se abre y se queda abierta al salir; solo cambia al entrar a otra */
+        c.addEventListener('mouseenter', function(){ sobre = c; if (!c.classList.contains('abierta')) { bajoCursor = c; sincronizar(); } });
+        c.addEventListener('mouseleave', function(){ if (sobre === c) sobre = null; });
+      }
+    });
+    var pista = cartas[0].parentElement;
+    var ultima = -1, pausaTactil, enPausa = false;
+    function vigilar(){
+      var k = cartas.findIndex(function(c){ return c.classList.contains('activo'); });
+      /* al moverse el carrusel manda la carta que tiene el cursor encima; si no hay, la activa.
+         En pantalla tactil la carta que llega se queda cerrada un instante (para leer la cara
+         cerrada) y despues gira. */
+      if (k !== ultima) {
+        ultima = k; elegida = null; bajoCursor = sobre;
+        if (!conCursor && revelada) {
+          cartas.forEach(function(c){ c.classList.remove('abierta'); });
+          enPausa = true; clearTimeout(pausaTactil);
+          pausaTactil = setTimeout(function(){ enPausa = false; sincronizar(); }, 650);
+          marcarPunto(null); return;
+        }
+      }
+      if (enPausa) return;
+      sincronizar();
+    }
+    pista.addEventListener('scroll', function(){ setTimeout(vigilar, 60); }, {passive:true});
+    var obs = new MutationObserver(vigilar);
+    cartas.forEach(function(c){ obs.observe(c, {attributes:true, attributeFilter:['class']}); });
+    /* sin paradas (todo cabe): la primera abierta */
+    if (!cartas.some(function(c){ return c.classList.contains('activo'); })) cartas[0].classList.add('activo');
+    altura(); vigilar();
+    var esp; window.addEventListener('resize', function(){ clearTimeout(esp); esp = setTimeout(altura, 120); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(altura);
+    setTimeout(altura, 400);
+  })();
   /* ---- estrellas fugaces ---- */
   (function(){
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
