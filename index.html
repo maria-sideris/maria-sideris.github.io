@@ -1636,7 +1636,7 @@
       cartas.forEach(function(c){ var t = c.querySelector('.tras'); t.style.position = ''; t.style.transform = ''; c.style.height = Math.ceil(alto) + 'px'; });
     }
     /* una sola carta abierta a la vez: la elegida (clic), si no la que esta bajo el cursor, si no la activa del carrusel */
-    var elegida = null, bajoCursor = null, sobre = null; /* sobre: la carta bajo el cursor ahora mismo */
+    var elegida = null, bajoCursor = null, sobre = null, bloqueoCursor = true, cerradaPorClic = null; /* sobre: la carta bajo el cursor ahora mismo */
     function abiertaAhora(){
       if (bajoCursor) return bajoCursor;
       if (elegida === 'ninguna') return null;
@@ -1668,24 +1668,32 @@
           setTimeout(function(){
             cartas.forEach(function(c){ c.classList.add('revelando'); });
             sincronizar();
-            setTimeout(function(){ cartas.forEach(function(c){ c.classList.remove('revelando'); }); }, 2000);
+            setTimeout(function(){ cartas.forEach(function(c){ c.classList.remove('revelando'); }); bloqueoCursor = false; }, 2000);
           }, 550);
         }
       }, {threshold: 0.35});
       io.observe(cartas[0].parentElement);
-    } else { revelada = true; }
+    } else { revelada = true; bloqueoCursor = false; }
     var conCursor = window.matchMedia('(hover:hover)').matches;
     cartas.forEach(function(c){
       c.addEventListener('click', function(e){
         if (e.target.closest('a, details, summary, button')) return;
-        var base = (elegida === 'ninguna') ? null : (elegida || cartas.find(function(x){ return x.classList.contains('activo'); }));
-        elegida = (base === c) ? 'ninguna' : c;
+        /* un clic alterna la carta: si esta abierta (por clic, por cursor o por ser la activa) se cierra,
+           y no vuelve a abrirse por el cursor hasta que el mouse salga de ella */
+        var abierta = c.classList.contains('abierta');
+        elegida = abierta ? 'ninguna' : c;
+        cerradaPorClic = abierta ? c : null;
         bajoCursor = null; enPausa = false; clearTimeout(pausaTactil); sincronizar();
       });
       if (conCursor) {
         /* la carta que recibe el cursor se abre y se queda abierta al salir; solo cambia al entrar a otra */
-        c.addEventListener('mouseenter', function(){ sobre = c; if (!c.classList.contains('abierta')) { bajoCursor = c; sincronizar(); } });
-        c.addEventListener('mouseleave', function(){ if (sobre === c) sobre = null; });
+        /* durante la revelacion de la primera carta el cursor no manda: si el usuario llega
+           deslizando con el mouse encima de otra carta, la primera completa su giro y recien
+           despues cualquier movimiento del cursor sobre una carta cerrada la abre */
+        function porCursor(){ if (bloqueoCursor || cerradaPorClic === c) return; if (!c.classList.contains('abierta') && bajoCursor !== c) { bajoCursor = c; sincronizar(); } }
+        c.addEventListener('mouseenter', function(){ sobre = c; porCursor(); });
+        c.addEventListener('mousemove', porCursor);
+        c.addEventListener('mouseleave', function(){ if (sobre === c) sobre = null; if (cerradaPorClic === c) cerradaPorClic = null; });
       }
     });
     var pista = cartas[0].parentElement;
