@@ -1701,11 +1701,14 @@
           /* primer giro mas lento y con una pausa antes, para que se entienda la dinamica */
           setTimeout(function(){
             cartas.forEach(function(c){ c.classList.add('revelando'); });
+            /* si al llegar el cursor ya descansa sobre una carta, la revelacion lenta es para esa, no para la primera */
+            if (conCursor) { var bc = cartaBajoCursor(); if (bc) { sobre = bc; bajoCursor = bc; } }
             sincronizar();
             setTimeout(function(){
               cartas.forEach(function(c){ c.classList.remove('revelando'); }); bloqueoCursor = false;
               /* si el cursor quedo quieto sobre otra carta durante la revelacion, esa se abre ahora sin esperar a que se mueva */
-              if (sobre && !sobre.classList.contains('abierta')) { bajoCursor = sobre; sincronizar(); }
+              var bc2 = conCursor ? cartaBajoCursor() : null;
+              if (bc2 && !bc2.classList.contains('abierta')) { sobre = bc2; bajoCursor = bc2; sincronizar(); }
             }, 2000);
           }, 550);
         }
@@ -1713,6 +1716,17 @@
       io.observe(cartas[0].parentElement);
     } else { revelada = true; bloqueoCursor = false; }
     var conCursor = window.matchMedia('(hover:hover)').matches;
+    /* ultima posicion del cursor: al llegar deslizando con la rueda, el navegador no siempre avisa
+       que una carta quedo bajo el mouse, asi que se mira directamente que hay en ese punto */
+    var cursorXY = null;
+    if (conCursor) document.addEventListener('mousemove', function(e){ cursorXY = [e.clientX, e.clientY]; }, {passive:true});
+    function cartaBajoCursor(){
+      if (sobre) return sobre;
+      if (!cursorXY) return null;
+      var el = document.elementFromPoint(cursorXY[0], cursorXY[1]);
+      var c = el && el.closest ? el.closest('.servicio') : null;
+      return (c && cartas.indexOf(c) >= 0) ? c : null;
+    }
     cartas.forEach(function(c){
       c.addEventListener('click', function(e){
         if (e.target.closest('a, details, summary, button')) return;
@@ -1767,6 +1781,21 @@
       sincronizar();
     }
     pista.addEventListener('scroll', function(){ setTimeout(vigilar, 60); }, {passive:true});
+    /* al desplazar la pagina con la rueda y el mouse quieto, el navegador no avisa que una carta
+       quedo bajo el cursor: al terminar el desplazamiento se revisa y, si hay una cerrada, se abre */
+    if (conCursor) {
+      var esperaPagina;
+      /* en captura sobre el documento: asi se entera aunque lo que se desplace no sea la ventana
+         sino un contenedor (como en el visor de prototipos) */
+      document.addEventListener('scroll', function(){
+        clearTimeout(esperaPagina);
+        esperaPagina = setTimeout(function(){
+          if (!revelada || bloqueoCursor) return;
+          var bc = cartaBajoCursor();
+          if (bc && bc !== cerradaPorClic && !bc.classList.contains('abierta')) { sobre = bc; bajoCursor = bc; sincronizar(); }
+        }, 120);
+      }, {capture:true, passive:true});
+    }
     var obs = new MutationObserver(vigilar);
     cartas.forEach(function(c){ obs.observe(c, {attributes:true, attributeFilter:['class']}); });
     /* sin paradas (todo cabe): la primera abierta */
