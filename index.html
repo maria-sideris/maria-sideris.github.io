@@ -1738,7 +1738,20 @@
          En pantalla tactil la carta que llega se queda cerrada un instante (para leer la cara
          cerrada) y despues gira. */
       if (k !== ultima) {
-        ultima = k; elegida = null; bajoCursor = sobre;
+        /* con cursor, al avanzar o retroceder el carrusel se abre la carta que sigue a la que estaba
+           abierta (en ese sentido), si quedo a la vista; si no, la activa */
+        var siguiente = null;
+        if (conCursor && revelada && ultima >= 0) {
+          var abiertaAntes = cartas.findIndex(function(c){ return c.classList.contains('abierta'); });
+          if (abiertaAntes >= 0) {
+            var idx = abiertaAntes + (k > ultima ? 1 : -1);
+            /* a la vista = entre la carta activa (primera visible) y las que caben a su derecha;
+               se calcula por indice porque el desplazamiento suave aun no termino */
+            var caben = Math.max(1, Math.round(pista.clientWidth / (cartas[0].offsetWidth + 18)));
+            if (idx >= k && idx < k + caben && cartas[idx]) siguiente = cartas[idx];
+          }
+        }
+        ultima = k; elegida = siguiente; bajoCursor = sobre;
         if (!conCursor && revelada) {
           cartas.forEach(function(c){ c.classList.remove('abierta'); });
           enPausa = true; clearTimeout(pausaTactil);
