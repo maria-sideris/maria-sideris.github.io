@@ -88,7 +88,7 @@
   section[id],article[id],details[id],header[id]{scroll-margin-top:92px}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   a{color:inherit}
-  h1,h2,h3{font-family:'Cinzel',Georgia,'Times New Roman',serif;font-weight:400;text-wrap:balance;margin:0;letter-spacing:.01em}
+  h1,h2,h3,.naipe .frente .titulo{font-family:'Cinzel',Georgia,'Times New Roman',serif;font-weight:400;text-wrap:balance;margin:0;letter-spacing:.01em}
   p{margin:0}
   .env{max-width:var(--max);margin:0 auto;padding:0 28px}
   .rotulo{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--plata);font-weight:400}
@@ -217,7 +217,7 @@
   .naipe .frente{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer;padding-top:20px;padding-bottom:44px}
   .naipe .frente .sello{width:64px;height:64px;opacity:.95;margin:14px 0 14px;display:block;filter:drop-shadow(0 0 5px rgba(168,200,234,.35))}
   .naipe .frente .duracion{display:block;position:absolute;top:28px;left:26px;right:26px;margin:0}
-  .naipe .frente h3{margin:0 0 12px;line-height:1.2;display:flex;align-items:flex-end;justify-content:center}
+  .naipe .frente .titulo{margin:0 0 12px;line-height:1.2;display:flex;align-items:flex-end;justify-content:center}
   .naipe .frente .eslogan{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:1.2rem;color:var(--oro-claro);margin:0;line-height:1.4}
   .naipe .frente .precio{font-size:1.2rem}
   .naipe .frente .abrir{position:absolute;bottom:18px;left:0;right:0;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tenue);opacity:.7}
@@ -408,7 +408,8 @@
   .servicio{flex:0 0 clamp(266px,29vw,318px);
     padding:28px 26px 26px;display:flex;flex-direction:column;gap:13px}
 
-  .servicio h3{font-size:1.45rem}
+  .servicio h3,.servicio .titulo{font-size:1.45rem}
+  .servicio .titulo{color:var(--pergamino)}
   .servicio .duracion{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--violeta)}
   .servicio p{color:var(--tenue);font-size:16px}
   .servicio > p:not(.duracion),.servicio .cuerpo{flex:1}
@@ -762,7 +763,7 @@
     .hero h1{font-size:1.62rem;line-height:1.26;letter-spacing:0;margin:0 0 22px}
     .cabecera h2{font-size:1.42rem;line-height:1.1}
     .cierre h2{font-size:1.5rem;line-height:1.1}
-    .servicio h3{font-size:1.16rem;line-height:1.14}
+    .servicio h3,.servicio .titulo{font-size:1.16rem;line-height:1.14}
     .escuela h3{font-size:1.12rem;line-height:1.14}
     .herr h3{font-size:1.04rem;line-height:1.18}
     .paso h3{font-size:1rem;line-height:1.18}
@@ -944,7 +945,7 @@
         <button class="flecha" type="button" data-dir="1" aria-label="Ver siguientes" data-en-aria="Show next">&#8250;</button>
       </div>
       <div class="servicios pista" tabindex="0" role="group" aria-label="Lecturas" data-en-aria="Readings">
-      <article class="servicio"><div class="naipe"><div class="cara frente" aria-hidden="true"><p class="duracion" data-en="&lt;span&gt;Foundational reading&lt;/span&gt;"><span>Lectura fundacional</span></p><h3 data-en="Full Vedic birth chart">Carta astral védica completa</h3><p class="eslogan" data-en="Where it makes sense to start.">Por donde conviene empezar.</p><svg class="sello" aria-hidden="true" focusable="false"><use href="#estrella-sideris"/></svg><span class="precio">$95.000<small data-en="CLP · approx. USD 103">CLP · aprox. USD 103</small></span><span class="abrir" data-en="Open">Abrir</span></div><div class="cara tras">
+      <article class="servicio"><div class="naipe"><div class="cara frente" aria-hidden="true"><p class="duracion" data-en="&lt;span&gt;Foundational reading&lt;/span&gt;"><span>Lectura fundacional</span></p><p class="titulo" data-en="Full Vedic birth chart">Carta astral védica completa</p><p class="eslogan" data-en="Where it makes sense to start.">Por donde conviene empezar.</p><svg class="sello" aria-hidden="true" focusable="false"><use href="#estrella-sideris"/></svg><span class="precio">$95.000<small data-en="CLP · approx. USD 103">CLP · aprox. USD 103</small></span><span class="abrir" data-en="Open">Abrir</span></div><div class="cara tras">
         <p class="duracion" data-en="&lt;span&gt;Foundational reading&lt;/span&gt;&lt;span class=&quot;min&quot;&gt;90 min&lt;/span&gt;"><span>Lectura fundacional</span><span class="min">90 min</span></p>
         <h3 data-en="Full Vedic birth chart">Carta astral védica completa</h3>
         <p data-en="I look at your ascendant, the Sun, the Moon and the other planets (grahas), the divisional charts for the areas that matter to you today, and the cycle (dasha) you are going through. It is the reading to start with.">Miro tu ascendente, el Sol, la Luna y los demás planetas (grahas), las cartas divisorias de los temas que hoy te importan y el ciclo (dasha) que estás atravesando. Es la lectura por donde conviene empezar.</p>
@@ -954,7 +955,7 @@
         </div>
       </div></div></article>
 
-      <article class="servicio"><div class="naipe"><div class="cara frente" aria-hidden="true"><p class="duracion" data-en="&lt;span&gt;Two charts&lt;/span&gt;"><span>Dos cartas</span></p><h3 data-en="Vedic synastry">Sinastría védica</h3><p class="eslogan" data-en="Compatibility with another.">Compatibilidad con un otro.</p><svg class="sello" aria-hidden="true" focusable="false"><use href="#estrella-sideris"/></svg><span class="precio">$110.000<small data-en="CLP · approx. USD 119">CLP · aprox. USD 119</small></span><span class="abrir" data-en="Open">Abrir</span></div><div class="cara tras">
+      <article class="servicio"><div class="naipe"><div class="cara frente" aria-hidden="true"><p class="duracion" data-en="&lt;span&gt;Two charts&lt;/span&gt;"><span>Dos cartas</span></p><p class="titulo" data-en="Vedic synastry">Sinastría védica</p><p class="eslogan" data-en="Compatibility with another.">Compatibilidad con un otro.</p><svg class="sello" aria-hidden="true" focusable="false"><use href="#estrella-sideris"/></svg><span class="precio">$110.000<small data-en="CLP · approx. USD 119">CLP · aprox. USD 119</small></span><span class="abrir" data-en="Open">Abrir</span></div><div class="cara tras">
         <p class="duracion" data-en="&lt;span&gt;Two charts&lt;/span&gt;&lt;span class=&quot;min&quot;&gt;90 min&lt;/span&gt;"><span>Dos cartas</span><span class="min">90 min</span></p>
         <h3 data-en="Vedic synastry">Sinastría védica</h3>
         <p data-en="I look at your chart and the other person&#x27;s to see where you flow and where you rub. I analyse the relationship charts (navamsha), your compatibility (ashta kuta) and the cycle (dasha) each of you is in, because two people rarely share the same season.">Miro tu carta y la de la otra persona para ver dónde fluyen y dónde rozan. Analizo las cartas del vínculo (navamsha), su compatibilidad (ashta kuta) y el ciclo (dasha) de cada uno, porque dos personas rara vez comparten la misma estación.</p>
@@ -964,7 +965,7 @@
         </div>
       </div></div></article>
 
-      <article class="servicio"><div class="naipe"><div class="cara frente" aria-hidden="true"><p class="duracion" data-en="&lt;span&gt;Affective map&lt;/span&gt;"><span>Mapa afectivo</span></p><h3 data-en="Love and relationships">Amor y relaciones</h3><p class="eslogan" data-en="What you seek and what keeps repeating.">Qué buscas y qué se te repite.</p><svg class="sello" aria-hidden="true" focusable="false"><use href="#estrella-sideris"/></svg><span class="precio">$80.000<small data-en="CLP · approx. USD 86">CLP · aprox. USD 86</small></span><span class="abrir" data-en="Open">Abrir</span></div><div class="cara tras">
+      <article class="servicio"><div class="naipe"><div class="cara frente" aria-hidden="true"><p class="duracion" data-en="&lt;span&gt;Affective map&lt;/span&gt;"><span>Mapa afectivo</span></p><p class="titulo" data-en="Love and relationships">Amor y relaciones</p><p class="eslogan" data-en="What you seek and what keeps repeating.">Qué buscas y qué se te repite.</p><svg class="sello" aria-hidden="true" focusable="false"><use href="#estrella-sideris"/></svg><span class="precio">$80.000<small data-en="CLP · approx. USD 86">CLP · aprox. USD 86</small></span><span class="abrir" data-en="Open">Abrir</span></div><div class="cara tras">
         <p class="duracion" data-en="&lt;span&gt;Affective map&lt;/span&gt;&lt;span class=&quot;min&quot;&gt;75 min&lt;/span&gt;"><span>Mapa afectivo</span><span class="min">75 min</span></p>
         <h3 data-en="Love and relationships">Amor y relaciones</h3>
         <p data-en="I look at your love life through your chart and your relationship chart (navamsha): what you seek, what keeps repeating, and the cycle (dasha) you are going through. To know yourself better, whether or not you are in a relationship.">Miro tu vida amorosa desde tu carta y tu carta del vínculo (navamsha): qué buscas, qué se te repite y qué ciclo (dasha) estás atravesando. Para conocerte mejor, estés o no en pareja.</p>
@@ -974,7 +975,7 @@
         </div>
       </div></div></article>
 
-      <article class="servicio"><div class="naipe"><div class="cara frente" aria-hidden="true"><p class="duracion" data-en="&lt;span&gt;Focused reading&lt;/span&gt;"><span>Lectura enfocada</span></p><h3 data-en="Work and vocation">Trabajo y vocación</h3><p class="eslogan" data-en="What is going on and what may be coming.">Qué pasa y qué puede venir.</p><svg class="sello" aria-hidden="true" focusable="false"><use href="#estrella-sideris"/></svg><span class="precio">$80.000<small data-en="CLP · approx. USD 86">CLP · aprox. USD 86</small></span><span class="abrir" data-en="Open">Abrir</span></div><div class="cara tras">
+      <article class="servicio"><div class="naipe"><div class="cara frente" aria-hidden="true"><p class="duracion" data-en="&lt;span&gt;Focused reading&lt;/span&gt;"><span>Lectura enfocada</span></p><p class="titulo" data-en="Work and vocation">Trabajo y vocación</p><p class="eslogan" data-en="What is going on and what may be coming.">Qué pasa y qué puede venir.</p><svg class="sello" aria-hidden="true" focusable="false"><use href="#estrella-sideris"/></svg><span class="precio">$80.000<small data-en="CLP · approx. USD 86">CLP · aprox. USD 86</small></span><span class="abrir" data-en="Open">Abrir</span></div><div class="cara tras">
         <p class="duracion" data-en="&lt;span&gt;Focused reading&lt;/span&gt;&lt;span class=&quot;min&quot;&gt;75 min&lt;/span&gt;"><span>Lectura enfocada</span><span class="min">75 min</span></p>
         <h3 data-en="Work and vocation">Trabajo y vocación</h3>
         <p data-en="I look at your chart, your career chart (dashamsha) and the cycle (dasha) you are going through. To understand what is going on in your working life, what may be coming, and whether it is time to make decisions or take on changes.">Miro tu carta, tu carta de la carrera (dashamsha) y el ciclo (dasha) que estás atravesando. Para comprender qué pasa en tu vida laboral, qué puede venir y si es momento de tomar decisiones o asumir cambios.</p>
@@ -984,7 +985,7 @@
         </div>
       </div></div></article>
 
-      <article class="servicio"><div class="naipe"><div class="cara frente" aria-hidden="true"><p class="duracion" data-en="&lt;span&gt;Your year&lt;/span&gt;"><span>Tu año</span></p><h3 data-en="Vedic solar return">Revolución solar védica</h3><p class="eslogan" data-en="The twelve months ahead.">Los doce meses que vienen.</p><svg class="sello" aria-hidden="true" focusable="false"><use href="#estrella-sideris"/></svg><span class="precio">$80.000<small data-en="CLP · approx. USD 86">CLP · aprox. USD 86</small></span><span class="abrir" data-en="Open">Abrir</span></div><div class="cara tras">
+      <article class="servicio"><div class="naipe"><div class="cara frente" aria-hidden="true"><p class="duracion" data-en="&lt;span&gt;Your year&lt;/span&gt;"><span>Tu año</span></p><p class="titulo" data-en="Vedic solar return">Revolución solar védica</p><p class="eslogan" data-en="The twelve months ahead.">Los doce meses que vienen.</p><svg class="sello" aria-hidden="true" focusable="false"><use href="#estrella-sideris"/></svg><span class="precio">$80.000<small data-en="CLP · approx. USD 86">CLP · aprox. USD 86</small></span><span class="abrir" data-en="Open">Abrir</span></div><div class="cara tras">
         <p class="duracion" data-en="&lt;span&gt;Your year&lt;/span&gt;&lt;span class=&quot;min&quot;&gt;75 min&lt;/span&gt;"><span>Tu año</span><span class="min">75 min</span></p>
         <h3 data-en="Vedic solar return">Revolución solar védica</h3>
         <p data-en="I look at your annual chart (varshaphala), the current cycle (dasha) and the transits that trigger it to read the twelve months ahead. For planning your year: when to push, when to hold, and when to wait.">Miro tu carta anual (varshaphala), el ciclo (dasha) en curso y los tránsitos que lo activan para leer los doce meses que vienen. Para planificar tu año: cuándo empujar, cuándo sostener y cuándo esperar.</p>
@@ -994,7 +995,7 @@
         </div>
       </div></div></article>
 
-      <article class="servicio" id="lectura-luna"><div class="naipe"><div class="cara frente" aria-hidden="true"><p class="duracion" data-en="&lt;span&gt;Lunar reading&lt;/span&gt;"><span>Lectura lunar</span></p><h3 data-en="Moon reading">Lectura de la Luna</h3><p class="eslogan" data-en="Your emotional and mental world.">Tu mundo emocional y mental.</p><svg class="sello" aria-hidden="true" focusable="false"><use href="#estrella-sideris"/></svg><span class="precio">$80.000<small data-en="CLP · approx. USD 86">CLP · aprox. USD 86</small></span><span class="abrir" data-en="Open">Abrir</span></div><div class="cara tras">
+      <article class="servicio" id="lectura-luna"><div class="naipe"><div class="cara frente" aria-hidden="true"><p class="duracion" data-en="&lt;span&gt;Lunar reading&lt;/span&gt;"><span>Lectura lunar</span></p><p class="titulo" data-en="Moon reading">Lectura de la Luna</p><p class="eslogan" data-en="Your emotional and mental world.">Tu mundo emocional y mental.</p><svg class="sello" aria-hidden="true" focusable="false"><use href="#estrella-sideris"/></svg><span class="precio">$80.000<small data-en="CLP · approx. USD 86">CLP · aprox. USD 86</small></span><span class="abrir" data-en="Open">Abrir</span></div><div class="cara tras">
         <p class="duracion" data-en="&lt;span&gt;Lunar reading&lt;/span&gt;&lt;span class=&quot;min&quot;&gt;75 min&lt;/span&gt;"><span>Lectura lunar</span><span class="min">75 min</span></p>
         <h3 data-en="Moon reading">Lectura de la Luna</h3>
         <p data-en="I look at your Moon, your emotional and mental world: how you process what you live, what unsettles you, and what you need to settle again. I also assess its strength, your lunar mansions (nakshatras) and your cycles (dashas).">Miro tu Luna, tu mundo emocional y mental: cómo procesas lo que vives, qué te desregula y qué necesitas para volver a asentarte. Evalúo también su fuerza, tus mansiones lunares (nakshatras) y tus ciclos (dashas).</p>
@@ -1008,7 +1009,7 @@
         </div>
       </div></div></article>
 
-      <article class="servicio" id="pregunta-puntual"><div class="naipe"><div class="cara frente" aria-hidden="true"><p class="duracion" data-en="&lt;span&gt;One question&lt;/span&gt;"><span>Una pregunta</span></p><h3 data-en="A single question">Pregunta puntual</h3><p class="eslogan" data-en="One question, one answer.">Una pregunta, una respuesta.</p><svg class="sello" aria-hidden="true" focusable="false"><use href="#estrella-sideris"/></svg><span class="precio">$40.000<small data-en="CLP · approx. USD 43">CLP · aprox. USD 43</small></span><span class="abrir" data-en="Open">Abrir</span></div><div class="cara tras">
+      <article class="servicio" id="pregunta-puntual"><div class="naipe"><div class="cara frente" aria-hidden="true"><p class="duracion" data-en="&lt;span&gt;One question&lt;/span&gt;"><span>Una pregunta</span></p><p class="titulo" data-en="A single question">Pregunta puntual</p><p class="eslogan" data-en="One question, one answer.">Una pregunta, una respuesta.</p><svg class="sello" aria-hidden="true" focusable="false"><use href="#estrella-sideris"/></svg><span class="precio">$40.000<small data-en="CLP · approx. USD 43">CLP · aprox. USD 43</small></span><span class="abrir" data-en="Open">Abrir</span></div><div class="cara tras">
         <p class="duracion" data-en="&lt;span&gt;One question&lt;/span&gt;&lt;span class=&quot;min&quot;&gt;30 min&lt;/span&gt;"><span>Una pregunta</span><span class="min">30 min</span></p>
         <h3 data-en="A single question">Pregunta puntual</h3>
         <p data-en="I answer a single question with the sky of the moment you ask it: this is horary astrology (prashna). You do not need your birth time. For something specific, without a full reading.">Respondo una sola pregunta con el cielo del momento en que la haces: es la astrología horaria (prashna). No necesitas tu hora de nacimiento. Para algo concreto, sin una lectura completa.</p>
@@ -1058,7 +1059,7 @@
         <p data-en="Date, recorded time and city. If you don't have your time, tell me and we sort it out before booking.">Fecha, hora registrada y ciudad. Si no tienes tu hora, me avisas y lo resolvemos antes de agendar.</p></div></div>
       <div class="paso"><div class="num">03</div><div>
         <h3 data-en="I prepare your chart">Preparo tu carta</h3>
-        <p data-en="I calculate and study your chart before we meet, along with your current dasha and the transits in play. If you left me a specific question, the session is built around it.">Calculo y estudio tu carta antes del encuentro, junto con tu dasha vigente y los tránsitos en juego. Si me dejaste una pregunta específica, la sesión se arma alrededor de ella.</p></div></div>
+        <p data-en="I calculate and study your birth chart before we meet, along with your current dasha and the transits in play. If you left me a specific question, the session is built around it.">Calculo y estudio tu carta natal antes del encuentro, junto con tu dasha vigente y los tránsitos en juego. Si me dejaste una pregunta específica, la sesión se arma alrededor de ella.</p></div></div>
       <div class="paso"><div class="num">04</div><div>
         <h3 data-en="We meet on video call">Nos encontramos en videollamada</h3>
         <p data-en="30, 75 or 90 minutes depending on the reading. Once the session is over, I send you in writing what we covered.">Duración de 30, 75 o 90 minutos según la lectura. Una vez terminada la sesión, te envío por escrito lo que vimos.</p></div></div>
@@ -1552,7 +1553,7 @@
      para que el texto que sigue parta a la misma altura en todos (lecturas, pasos, temas) */
   function igualarTarjetas(){
     var ancha = true; /* se alinea en todas las pantallas: en el telefono la tarjeta que asoma queda a la misma altura */
-    ['.frente .duracion', '.tras .duracion', '.frente h3', '.tras h3', '.frente .eslogan', '.paso h3', '.tema-h', '.herr h3'].forEach(function(sel){
+    ['.frente .duracion', '.tras .duracion', '.frente .titulo', '.tras h3', '.frente .eslogan', '.paso h3', '.tema-h', '.herr h3'].forEach(function(sel){
       var els = Array.prototype.slice.call(document.querySelectorAll(sel));
       els.forEach(function(e){ e.style.minHeight = ''; });
       if (!ancha || els.length < 2) return;
